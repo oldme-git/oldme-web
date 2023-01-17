@@ -16,5 +16,8 @@ export default defineNuxtConfig({
         "assets": "/assets"
     },
     modules: [
+    ],
+    css: [
+        "element-plus/dist/index.css"
     ]
 })
