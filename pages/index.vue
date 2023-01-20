@@ -1,8 +1,6 @@
 <template>
   <div>
-    这是一个{{ pageName }}
-    <NuxtLink to="/">index</NuxtLink>
-    <NuxtLink to="about">about</NuxtLink>
+    <p>123</p>
   </div>
 </template>
 
