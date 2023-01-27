@@ -8,6 +8,12 @@ export default defineNuxtConfig({
             meta: [
                 // { name: "description", content: "My amazing site." }
             ],
+            link: [
+                {
+                    rel: "stylesheet",
+                    href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+                },
+            ]
         }
     },
     // 别名配置
@@ -18,7 +24,7 @@ export default defineNuxtConfig({
     modules: [
     ],
     css: [
-        "element-plus/dist/index.css",
-        "assets/scss/style.scss"
+        // "element-plus/dist/index.css",
+        "assets/scss/app.scss"
     ]
 })

@@ -1,0 +1,13 @@
+@each $w in $wList {
+  @media (min-width: wVal($w)) {
+    $-w: -#{$w};
+    @if $-w == -xs {
+      $-w: '';
+    }
+    @each $attr in block, none, flex, inline, inline-block {
+      .d#{$-w}-#{$attr} {
+        display: $attr !important;
+      }
+    }
+  }
+}

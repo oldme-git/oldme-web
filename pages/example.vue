@@ -1,8 +1,6 @@
 <template>
   <div>
     这是一个{{ pageName }}
-    <el-button :plain="true" @click="">VNode</el-button>
-    <el-button type="primary">Primary</el-button>
     <NuxtLink to="/">index</NuxtLink>
     <NuxtLink to="about">about</NuxtLink>
     <p v-for="v in list">{{ v.title }}</p>
@@ -10,7 +8,6 @@
 </template>
 
 <script setup>
-import { ElButton } from 'element-plus'
 let pageName = "about"
 
 let { data:d, error:err } = await useFetch("http://api.oldmedev.top/admin/v1/article/list", {

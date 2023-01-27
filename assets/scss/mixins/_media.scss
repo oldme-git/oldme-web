@@ -1,0 +1,23 @@
+$xs:0;
+$sm:576px;
+$md:768px;
+$lg:992px;
+$xl:1200px;
+$wList: ('xs', 'sm', 'md', 'lg', 'xl');
+@function wVal($w) {
+  @if $w == 'xs' {
+    @return $xs;
+  }
+  @if $w == 'sm' {
+    @return $sm;
+  }
+  @if $w == 'md' {
+    @return $md;
+  }
+  @if $w == 'lg' {
+    @return $lg
+  }
+  @if $w == 'xl' {
+    @return $xl;
+  }
+}

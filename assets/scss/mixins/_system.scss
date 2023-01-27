@@ -1,0 +1,41 @@
+@import "media";
+
+// 系统
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 12px;
+  //font-size: calc(100vw * 10 / 375);
+
+  @media (min-width: $lg) {
+    //font-size: calc(100vw * 14 / 1920);
+  }
+}
+
+@mixin ho {
+  &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.mt1 {
+  margin-top: 1rem;
+}
+
+.mt1 {
+  margin-top: 1rem;
+}
+
+.mt1 {
+  margin-top: 1rem;
+}
+
+li {
+  list-style: none;
+}
+

@@ -1,0 +1,37 @@
+@each $axis in center, justify, align {
+  @if $axis == 'center' {
+    .flex-#{$axis} {
+      display: flex;
+      align-items: #{$axis};
+      justify-items: #{$axis};
+      -webkit-justify-content: #{$axis};
+      -webkit-align-items: #{$axis};
+    }
+  } @else {
+    @each $type in start, center, end {
+      .flex-#{$axis}-#{$type} {
+        display: flex;
+        @if $type != 'center' {
+          $type: flex-#{$type};
+        }
+        #{$axis}-items: #{$type};
+        -webkit-#{$axis}-content: #{$type};
+      }
+    }
+  }
+}
+
+@each $w in $wList {
+  @media (min-width: wVal($w)) {
+    $-w: -#{$w};
+    @if $-w == -xs {
+      $-w: '';
+    }
+
+    @each $order in 0, 1, 2, 3, 4 {
+      .order#{$-w}-#{$order} {
+        order: #{$order};
+      }
+    }
+  }
+}

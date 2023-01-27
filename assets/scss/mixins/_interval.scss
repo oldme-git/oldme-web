@@ -1,0 +1,57 @@
+@mixin margin($d, $c) {
+  margin-#{$d}: $c + rem !important;
+}
+
+@mixin padding($d, $c) {
+  padding-#{$d}: $c + rem !important;
+}
+
+@for $i from 0 to 6 {
+  .m#{$i},
+  .mt#{$i},
+  .my#{$i} {
+    @include margin(top, $i);
+  }
+
+  .m#{$i},
+  .mb#{$i},
+  .my#{$i} {
+    @include margin(bottom, $i);
+  }
+
+  .m#{$i},
+  .ml#{$i},
+  .mx#{$i} {
+    @include margin(left, $i);
+  }
+
+  .m#{$i},
+  .mr#{$i},
+  .mx#{$i} {
+    @include margin(right, $i);
+  }
+
+  .p#{$i},
+  .pt#{$i},
+  .py#{$i} {
+    @include padding(top, $i);
+  }
+
+  .p#{$i},
+  .pb#{$i},
+  .py#{$i} {
+    @include padding(bottom, $i);
+  }
+
+  .p#{$i},
+  .pl#{$i},
+  .px#{$i} {
+    @include padding(left, $i);
+  }
+
+  .p#{$i},
+  .pr#{$i},
+  .px#{$i} {
+    @include padding(right, $i);
+  }
+}
