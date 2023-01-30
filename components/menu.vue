@@ -14,7 +14,7 @@
         近期文章
       </h1>
       <ul class="list-1">
-        <li :data-sort="i+1" v-for="(l, i) in list">{{ l.title }}</li>
+        <li v-for="l in list">{{ l.title }}</li>
       </ul>
     </div>
   </div>
