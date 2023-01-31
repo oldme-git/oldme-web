@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="article-list">
     <ul class="list-2">
       <li v-for="l in list">
         <div class="left">
@@ -7,8 +7,8 @@
         </div>
         <div class="right">
           <h2 class="title">{{ l.title }}</h2>
-          <p class="description">{{ l.description }}</p>
-          <p class="time">{{ l.created_time }}</p>
+          <p class="description">描述： {{ l.description }}</p>
+          <p class="time"><i class="fa fa-clock-o"></i> {{ l.created_time }}</p>
         </div>
       </li>
     </ul>
@@ -17,12 +17,31 @@
 
 <script setup>
   let list = ref([])
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 15; i++) {
     list.value.push({
-      "title": "这是一个标题",
+      "title": "这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题",
       "created_time": "2023-1-27 21:40:06",
-      "thumb": "https://cjunn.gitee.io/blog_theme_atum/style1/img/pageItem/page-item-2.jpg",
+      "thumb": "https://cjunn.gitee.io/blog_theme_atum/style1/img/pageItem/page-item-25.jpg",
       "description": "这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介"
     })
   }
+  onMounted(() => {
+    window.addEventListener("scroll", () => {
+      // 已经滚动的高度
+      let scroll = document.documentElement.scrollTop || document.body.scrollTop
+      let top = window.screen.height + scroll
+      // body高度
+      let bodyH = document.body.clientHeight
+      if (top + 500 > bodyH) {
+        for (let i = 0; i < 15; i++) {
+          list.value.push({
+            "title": "这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题",
+            "created_time": "2023-1-27 21:40:06",
+            "thumb": "https://cjunn.gitee.io/blog_theme_atum/style1/img/pageItem/page-item-25.jpg",
+            "description": "这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介"
+          })
+        }
+      }
+    })
+  })
 </script>

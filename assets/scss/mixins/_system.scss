@@ -8,11 +8,6 @@
 
 html {
   font-size: 12px;
-  //font-size: calc(100vw * 10 / 375);
-
-  @media (min-width: $lg) {
-    //font-size: calc(100vw * 14 / 1920);
-  }
 }
 
 @mixin ho {

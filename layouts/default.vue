@@ -15,8 +15,8 @@
 <!--        <i class="fa fa-search"></i>-->
 <!--      </div>-->
     </div>
-    <div class="body">
-      <div class="main">
+    <div class="body" id="body">
+      <div class="main" :class="{'main-open': isOpen, 'main-close': !isOpen}">
         <slot />
       </div>
       <div class="sidebar" id="sidebar" :class="{'sidebar-open': isOpen, 'sidebar-close': !isOpen}">
@@ -30,6 +30,12 @@
   let isOpen = ref(false)
 
   watch (isOpen, (status) => {
-    document.getElementById("__nuxt").style.overflow = status ? "auto" : "hidden"
+    if (status) {
+      document.getElementById("__nuxt").style.overflowX = "auto"
+      document.getElementById("body").style.height = "92rem"
+    } else {
+      document.getElementById("__nuxt").style.overflowX = "hidden"
+      document.getElementById("body").style.height = "auto"
+    }
   })
 </script>
