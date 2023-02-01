@@ -1,5 +1,9 @@
 <template>
   <div class="menu">
+    <div class="xs-search">
+      <Search />
+    </div>
+
     <div>
       <h1 class="main-title">
         热门文章

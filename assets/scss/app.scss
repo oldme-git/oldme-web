@@ -1,8 +1,21 @@
 @import "./layout";
 
+html {
+  background-color: #f3f3f3;
+}
+
 #__nuxt {
   overflow-x: hidden;
-  background-color: #f3f3f3;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
 }
 
 .layout {
@@ -38,13 +51,15 @@
   @include full-space;
 
   .header-title {
-    color: #fff;
 
-    h1 {
+    .title {
       font-size: 2.2rem;
+      color: #ffffff;
+      font-weight: bold;
     }
 
     p {
+      color: #ffffff;
       font-size: 1.2rem;
     }
   }
@@ -57,14 +72,6 @@
 
     @media (min-width: $lg) {
       display: none !important;
-    }
-  }
-
-  .search {
-    display: none;
-
-    input {
-      width: 10rem;
     }
   }
 }
@@ -119,6 +126,57 @@
 
   .sidebar-close {
     right: calc(-100% - 2rem);
+  }
+}
+
+.search {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  input {
+    outline: none;
+    padding: .6rem 2rem .6rem 1rem;
+    color: #666666;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px #ffffff solid;
+    border-radius: .2rem;
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    height: 100%;
+    position: absolute;
+    right: 0;
+    color: #888888;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-size: 1.4rem;
+    padding-right: .4rem;
+    cursor: pointer;
+  }
+}
+
+.xs-search {
+  display: block;
+  height: 3rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: $lg) {
+    display: none;
+  }
+}
+
+.lg-search {
+  display: none;
+  width: 17rem;
+  height: 2.6rem;
+
+  @media (min-width: $lg) {
+    display: block;
   }
 }
 
@@ -213,15 +271,21 @@
   }
 
   li {
-    height: 12rem;
-    display: flex;
-    background-color: #ffffff;
-    padding: .6rem;
-    border-radius: .6rem;
-    box-shadow: 0 2px 6px #cccccc;
+    a {
+      height: 12rem;
+      display: flex;
+      background-color: #ffffff;
+      padding: .6rem;
+      border-radius: .6rem;
+      box-shadow: 0 2px 6px #cccccc;
+      cursor: pointer;
 
-    @media (min-width: $lg) {
-      padding: 1.2rem;
+      &:hover {
+        box-shadow: 2px 6px 6px #cccccc;
+      }
+      @media (min-width: $lg) {
+        padding: 1.2rem;
+      }
     }
 
     .left {
@@ -285,5 +349,50 @@
         }
       }
     }
+  }
+}
+
+.article {
+  background-color: #ffffff;
+  padding: 1.2rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 6px #cccccc;
+
+  .title {
+    font-size: 2.4rem;
+    color: #666666;
+  }
+
+  .head {
+    font-size: 1.2rem;
+    color: #999999;
+    margin-top: .6rem;
+
+    .create {
+      margin-left: 1rem;
+    }
+  }
+
+  .description {
+    margin: 1rem 0;
+    padding: 1.2rem;
+    background-color: #f3f3f3;
+    color: #555555;
+    position: relative;
+    font-size: 1.4rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: .2rem;
+      top: 0;
+      left: 0;
+      background-color: #8076a3;
+    }
+  }
+
+  .content {
+    margin-top: 1rem;
   }
 }
