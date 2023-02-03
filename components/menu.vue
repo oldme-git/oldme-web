@@ -9,7 +9,9 @@
         热门文章
       </h1>
       <ul class="list-hot">
-        <li :data-sort="i+1" v-for="(l, i) in list">{{ l.title }}</li>
+        <li :data-sort="i+1" v-for="(l, i) in listHot">
+          <NuxtLink :to="'/article/' + l.id">{{ l.title }}</NuxtLink>
+        </li>
       </ul>
     </div>
 
@@ -18,17 +20,60 @@
         近期文章
       </h1>
       <ul class="list-1">
-        <li v-for="l in list">{{ l.title }}</li>
+        <li v-for="l in listNew">
+          <NuxtLink :to="'/article/' + l.id">{{ l.title }}</NuxtLink>
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script setup>
-  let list = ref([])
-  for (let i = 0; i < 10; i++) {
-    list.value.push({
-      "title": "这是一个标题"
-    })
+import api from "../utils/api";
+
+const listHot = ref([])
+const listNew = ref([])
+const {data: dHot, error: errHot} = await useFetch(api + "/app/article/rank", {
+  query: {
+    basis: 1
   }
+})
+
+try {
+  if (dHot.value.code !== 0) {
+    console.log(dHot.value.message)
+  } else {
+    let dataList = dHot.value.data.list
+    let len = dataList.length
+    if (len > 0) {
+      for (let i = 0; i < dataList.length; i++) {
+        listHot.value.push(dataList[i])
+      }
+    }
+  }
+} catch (e) {
+  console.log(e)
+}
+
+const {data: dNew, error: errNew} = await useFetch(api + "/app/article/rank", {
+  query: {
+    basis: 1
+  }
+})
+
+try {
+  if (dNew.value.code !== 0) {
+    console.log(dNew.value.message)
+  } else {
+    let dataList = dNew.value.data.list
+    let len = dataList.length
+    if (len > 0) {
+      for (let i = 0; i < dataList.length; i++) {
+        listNew.value.push(dataList[i])
+      }
+    }
+  }
+} catch (e) {
+  console.log(e)
+}
 </script>

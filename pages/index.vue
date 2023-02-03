@@ -9,47 +9,96 @@
           <div class="right">
             <h2 class="title">{{ l.title }}</h2>
             <p class="description">描述： {{ l.description }}</p>
-            <p class="time"><i class="fa fa-clock-o"></i> {{ l.created_time }}</p>
+            <p class="time"><i class="fa fa-clock-o"></i> {{ l.createdAt }}</p>
           </div>
         </NuxtLink>
+      </li>
+      <li v-if="list.length===0" class="no-result">
+        没有搜索到内容，请重新搜索
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-  import {navigateTo} from "nuxt/app";
+import api from "../utils/api"
+import {useRoute} from "nuxt/app"
 
-  let list = ref([])
-  for (let i = 0; i < 15; i++) {
-    list.value.push({
-      "id": i,
-      "title": "这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题",
-      "created_time": "2023-1-27 21:40:06",
-      "thumb": "https://cjunn.gitee.io/blog_theme_atum/style1/img/pageItem/page-item-25.jpg",
-      "description": "这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介"
-    })
+const route = useRoute()
+let page = ref(1)
+let list = ref([])
+let search = ref("")
+
+if (process.client) {
+  const getQueryVariable = (variable) => {
+    let query = window.location.search.substring(1)
+    let vars = query.split("&")
+    for (let i = 0; i < vars.length; i++) {
+      let pair = vars[i].split("=")
+      if (pair[0] == variable) {
+        return pair[1]
+      }
+    }
+    return ""
   }
-  onMounted(() => {
-    window.addEventListener("scroll", () => {
-      // 已经滚动的高度
-      let scroll = document.documentElement.scrollTop || document.body.scrollTop
-      let top = window.screen.height + scroll
-      // body高度
-      let bodyH = document.body.clientHeight
-      if (top + 500 > bodyH) {
-        for (let i = 0; i < 15; i++) {
-          list.value.push({
-            "title": "这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题这是一个标题",
-            "created_time": "2023-1-27 21:40:06",
-            "thumb": "https://cjunn.gitee.io/blog_theme_atum/style1/img/pageItem/page-item-25.jpg",
-            "description": "这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介"
-          })
+  search = getQueryVariable("search")
+}
+
+onMounted(() => {
+  loadData()
+  window.addEventListener("scroll", scrollEvent)
+})
+
+async function loadData() {
+  let {data: d, error: err} = await useFetch(api + "/app/article/list", {
+    query: {
+      page,
+      search
+    }
+  })
+
+  try {
+    if (d.value.code !== 0) {
+      console.log(d.value.message)
+    } else {
+      let dataList = d.value.data.list
+      let len = dataList.length
+      if (len > 0) {
+        if (process.client) {
+          addScroll()
+        }
+        for (let i = 0; i < dataList.length; i++) {
+          list.value.push(dataList[i])
         }
       }
-    })
-  })
-  function goArticle(id) {
-    navigateTo("/article/" + id)
+    }
+  } catch (e) {
+    console.log(e)
   }
+}
+
+// 开始监听
+function addScroll() {
+  window.addEventListener("scroll", scrollEvent)
+}
+// 停止监听
+
+function removeScroll() {
+  window.removeEventListener("scroll", scrollEvent)
+}
+// 滚动监听事件
+
+function scrollEvent () {
+  // 已经滚动的高度
+  let scroll = document.documentElement.scrollTop || document.body.scrollTop
+  let top = window.screen.height + scroll
+  // body高度
+  let bodyH = document.body.clientHeight
+  if (top + 500 > bodyH) {
+    removeScroll()
+    page.value++
+    loadData()
+  }
+}
+
 </script>

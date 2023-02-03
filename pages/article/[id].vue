@@ -14,21 +14,27 @@
     <p class="description">
       {{ details.description }}
     </p>
-    <div class="content">
-      {{ details.content }}
-    </div>
+    <div class="content" v-html="details.content"></div>
   </div>
 </template>
 
 <script setup>
-  import {useRoute} from "nuxt/app";
-  const route = useRoute()
-  const id = route.params.id
-  const details = {
-    "title": "这是一个标题",
-    "author": "half",
-    "description": "教你写个hello world教你写个hello world教你写个hello world教你写个hello world",
-    "content": "我是内容",
-    "createdAt": "2023-02-01"
+import {useRoute} from "nuxt/app";
+import api from "../../utils/api";
+const route = useRoute()
+
+const id = route.params.id
+
+let details = ref()
+let {data: d, error: err} = await useFetch(api + "/app/article/show/" + id)
+
+try {
+  if (d.value.code !== 0) {
+    console.log(d.value.message)
+  } else {
+    details.value = d.value.data
   }
+} catch (e) {
+  console.log(e)
+}
 </script>

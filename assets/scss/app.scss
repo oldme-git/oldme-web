@@ -200,8 +200,14 @@ html {
     border-bottom: 1px #ddd solid;
     position: relative;
     box-sizing: border-box;
-    color: #666;
+    color: #666666;
     cursor: pointer;
+
+    a {
+      color: #666666;
+      display: inline-block;
+      width: 100%;
+    }
   }
 }
 
@@ -303,6 +309,7 @@ html {
     .right {
       position: relative;
       margin-left: 1.6rem;
+      width: 100%;
 
       .title,
       .description {
@@ -349,6 +356,11 @@ html {
         }
       }
     }
+  }
+
+  .no-result {
+    font-size: 1.6rem;
+    color: #666666;
   }
 }
 

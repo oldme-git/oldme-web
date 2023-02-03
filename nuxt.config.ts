@@ -12,7 +12,7 @@ export default defineNuxtConfig({
             link: [
                 {
                     rel: "stylesheet",
-                    href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+                        href: "https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css"
                 },
             ]
         }
@@ -27,5 +27,5 @@ export default defineNuxtConfig({
     css: [
         // "element-plus/dist/index.css",
         "assets/scss/app.scss"
-    ]
+    ],
 })
