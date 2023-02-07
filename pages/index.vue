@@ -9,14 +9,21 @@
           <div class="right">
             <h2 class="title">{{ l.title }}</h2>
             <p class="description">描述： {{ l.description }}</p>
-            <p class="time"><i class="fa fa-clock-o"></i> {{ l.createdAt }}</p>
+            <p class="time"><i class="fa-regular fa-clock"></i> {{ l.createdAt }}</p>
           </div>
         </NuxtLink>
       </li>
-      <li v-if="list.length===0" class="no-result">
-        没有搜索到内容，请重新搜索
-      </li>
     </ul>
+    <div>
+      <div v-if="list.length===0">
+        <span class="no-result" v-if="search">
+          没有搜索到内容，请重新搜索
+        </span>
+        <p class="loading" v-else>
+          <i class="fa-solid fa-spinner fa-spin"></i>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -81,13 +88,13 @@ async function loadData() {
 function addScroll() {
   window.addEventListener("scroll", scrollEvent)
 }
-// 停止监听
 
+// 停止监听
 function removeScroll() {
   window.removeEventListener("scroll", scrollEvent)
 }
-// 滚动监听事件
 
+// 滚动监听事件
 function scrollEvent () {
   // 已经滚动的高度
   let scroll = document.documentElement.scrollTop || document.body.scrollTop

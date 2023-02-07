@@ -20,6 +20,7 @@ html {
 
 .layout {
   width: 100%;
+  min-height: 100vh;
   padding: 0 2rem;
   box-sizing: border-box;
 
@@ -357,11 +358,6 @@ html {
       }
     }
   }
-
-  .no-result {
-    font-size: 1.6rem;
-    color: #666666;
-  }
 }
 
 .article {
@@ -407,4 +403,19 @@ html {
   .content {
     margin-top: 1rem;
   }
+}
+
+.no-result {
+  font-size: 1.6rem;
+  color: #666666;
+}
+
+.loading {
+  color: #aaaaaa;
+  font-size: 8rem;
+  width: 100%;
+  height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -7,7 +7,7 @@
         {{ details.author }}
       </span>
       <span class="create">
-        <i class="fa fa-clock-o"></i>
+        <i class="fa-regular fa-clock"></i>
         {{ details.createdAt }}
       </span>
     </div>
