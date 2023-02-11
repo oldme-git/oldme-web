@@ -14,7 +14,7 @@
     <p class="description">
       {{ details.description }}
     </p>
-    <div class="content" v-html="details.content"></div>
+    <div class="content rich" v-html="details.content"></div>
   </div>
 </template>
 
