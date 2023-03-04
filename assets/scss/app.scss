@@ -419,3 +419,26 @@ html {
   align-items: center;
   justify-content: center;
 }
+
+.link {
+  li {
+    padding-left: 1rem;
+    box-sizing: border-box;
+    line-height: 3rem;
+    font-size: 1.4rem;
+    border-bottom: 1px #eeeeee solid;
+    color: #666666;
+
+    .link-title {
+      display: inline-block;
+      width: 30%;
+      color: #63a7ea;
+    }
+
+    &:nth-child(1) {
+      .link-title {
+        color: #666666 !important;
+      }
+    }
+  }
+}

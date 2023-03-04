@@ -4,6 +4,20 @@
       <Search />
     </div>
 
+    <div class="mt1">
+      <h1 class="main-title">
+        网站导航
+      </h1>
+      <ul class="list-1">
+        <li>
+          <NuxtLink to="/about">关于我</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/link">友情链接</NuxtLink>
+        </li>
+      </ul>
+    </div>
+
     <div>
       <h1 class="main-title">
         热门文章
