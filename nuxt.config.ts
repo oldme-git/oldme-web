@@ -7,7 +7,8 @@ export default defineNuxtConfig({
             viewport: "width=500, initial-scale=1",
             title: "oldme",
             meta: [
-                // { name: "description", content: "My amazing site." }
+                { name: "keywords", content: "oldme博客,PHP,Golang,Web开发,Web前端,Vue,Nginx" },
+                { name: "description", content: "oldme的博客，主要用来做IT技术类的知识分享，记录自己的学习历程。主要分享golang，php，vue类的Web知识" }
             ],
             link: [
                 {
