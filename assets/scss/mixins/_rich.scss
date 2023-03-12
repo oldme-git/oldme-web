@@ -48,6 +48,7 @@
     font-size: 1.2rem;
     padding-left: .2rem;
     margin-top: 1rem;
+    line-height: 1.8rem;
 
     strong {
       color: #564b7e;
@@ -56,5 +57,26 @@
 
   span[style="text-decoration: underline"] {
     color: red;
+  }
+
+  table {
+    margin: 1rem 0;
+    color: #333333;
+    border: none;
+    font-size: 1.2rem;
+    border-collapse: collapse;
+    tr {
+      background-color: rgb(163, 153, 199);
+      border-radius: 10px;
+
+      &:nth-child(2n) {
+        background-color: rgb(224, 220, 238);
+      }
+    }
+
+    td {
+      box-sizing: border-box;
+      padding: .6rem .8rem;
+    }
   }
 }

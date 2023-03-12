@@ -37,4 +37,15 @@ try {
 } catch (e) {
   console.log(e)
 }
+
+if (process.client) {
+  const img = document.getElementsByTagName("img")
+  for (let i of img) {
+    i.addEventListener("click", () => {
+      let src = i.getAttribute("src")
+      window.open(src)
+    })
+  }
+
+}
 </script>
