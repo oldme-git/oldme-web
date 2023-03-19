@@ -9,7 +9,7 @@
           <div class="right">
             <h2 class="title">{{ l.title }}</h2>
             <p class="description">描述： {{ l.description }}</p>
-            <p class="time"><i class="fa-regular fa-clock"></i> {{ l.updatedAt }}</p>
+            <p class="time"><i class="fa-regular fa-clock"></i> {{ l.createdAt }}</p>
           </div>
         </NuxtLink>
       </li>
@@ -78,7 +78,6 @@ async function loadData() {
           list.value.push(dataList[i])
         }
       }
-      console.log(list)
     }
   } catch (e) {
     console.log(e)

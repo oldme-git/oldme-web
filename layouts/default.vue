@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="body" id="body">
-      <div class="main" :class="{'main-open': isOpen, 'main-close': !isOpen}">
+      <div class="main" id="main" :class="{'main-open': isOpen, 'main-close': !isOpen}">
         <slot />
       </div>
       <div class="sidebar" id="sidebar" :class="{'sidebar-open': isOpen, 'sidebar-close': !isOpen}">

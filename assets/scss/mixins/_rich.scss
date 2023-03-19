@@ -1,54 +1,83 @@
 .rich {
-  margin-top: -1rem !important;
+  margin-top: -10px !important;
 
   h1 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
     width: 100%;
-    height: 4rem;
+    height: 46px;
     background-color: #8076a3;
     box-shadow: 3px 2px 4px 3px rgb(0 0 0 / 5%);
-    border-radius: 0.4rem;
-    line-height: 4rem;
+    border-radius: 4px;
+    line-height: 46px;
     color: #ffffff;
-    padding-left: 1.2rem;
+    padding-left: 12px;
     box-sizing: border-box;
-    font-size: 1.8rem;
+    font-size: 20px;
+  }
+
+  h2 {
+    color: #333333;
+    box-sizing: border-box;
+    font-size: 18px;
+    position: relative;
+    padding-left: 10px;
+    background-color: #f1f1f1;
+    line-height: 39px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 4px;
+      border-radius: 2px;
+      top: 0;
+      left: 0;
+      background-color: #8076a3;
+    }
   }
 
   code {
-    background-color: #e1ddf3;
-    color: #8076a3;
-    border-radius: .2rem;
-    padding: .2rem;
+    background-color: #e2e1e4;
+    color: #2f2f35;
+    border-radius: 2px;
+    padding: 2px;
+    border: 1px solid #aaaaaa;
   }
 
   pre {
-    margin: .6rem 0;
-    padding: 1rem;
-    border-radius: .2rem;
+    margin: 6px 0;
+    padding: 10px;
+    border-radius: 2px;
     overflow-x: auto;
-    background-color: #f3f3f3;
+    background-color: #e2e1e4;
     position: relative;
-    font-size: 1.4rem;
+    font-size: 14px;
+    line-height: 20px;
+    box-sizing: border-box;
+    border: 1px solid #aaaaaa;
 
     code {
       background-color: transparent;
-      color: #555555;
+      padding: 0;
+      line-height: 24px;
+      border: none;
     }
   }
 
   img {
     max-width: 100%;
-    margin: 1rem 0;
+    margin: 6px 0;
   }
 
   p {
-    color: #555555;
-    font-size: 1.2rem;
-    padding-left: .2rem;
-    margin-top: 1rem;
-    line-height: 1.8rem;
+    color: #333333;
+    font-size: 15px;
+    padding: 0 4px;
+    line-height: 30px;
+    letter-spacing: 1px;
 
     strong {
       color: #564b7e;
@@ -60,23 +89,57 @@
   }
 
   table {
-    margin: 1rem 0;
+    margin: 10px 0;
     color: #333333;
-    border: none;
-    font-size: 1.2rem;
+    border: 1px solid #666666;
+    font-size: 12px;
     border-collapse: collapse;
+
+    thead {
+      tr {
+        background-color: #bbbbbb;
+        font-weight: 700;
+      }
+    }
+
     tr {
-      background-color: rgb(163, 153, 199);
+      background-color: #eeeeee;
       border-radius: 10px;
 
       &:nth-child(2n) {
-        background-color: rgb(224, 220, 238);
+        background-color: #e3e3e3;
       }
     }
 
     td {
       box-sizing: border-box;
-      padding: .6rem .8rem;
+      padding: 6px 8px;
     }
   }
+
+  ol, ul {
+    padding: 8px 8px 8px 26px;
+    box-sizing: border-box;
+    background-color: #eeeeee;
+    border-radius: 2px;
+    border: 1px solid #aaaaaa;
+
+    li {
+      line-height: 22px;
+      font-size: 13px;
+    }
+  }
+
+  ul {
+    li {
+      list-style: disc !important;
+    }
+  }
+
+  ol {
+    li {
+      list-style: decimal !important;
+    }
+  }
+
 }

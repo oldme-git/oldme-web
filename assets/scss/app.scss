@@ -361,7 +361,7 @@ html {
 }
 
 .article {
-  background-color: #ffffff;
+  background-color: #f6f6f6;
   padding: 1.2rem;
   border-radius: 0.6rem;
   box-shadow: 0 2px 6px #cccccc;
@@ -384,11 +384,12 @@ html {
   .description {
     margin: 1rem 0;
     padding: 1.2rem;
-    background-color: #f3f3f3;
-    color: #555555;
+    background-color: #eeeeee;
+    color: #333333;
     position: relative;
-    font-size: 1.4rem;
-    line-height: 2rem;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: 1px;
 
     &:after {
       content: "";
@@ -441,5 +442,20 @@ html {
         color: #666666 !important;
       }
     }
+  }
+}
+
+.list-hoc {
+  a {
+    color: #63a7ea;
+    font-size: 1.4rem;
+    line-height: 20px;
+    border-bottom: 1px #eeeeee solid;
+    display: block;
+    padding: .8rem 0;
+  }
+
+  .h2 {
+    padding-left: 2rem;
   }
 }
