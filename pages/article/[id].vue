@@ -8,7 +8,7 @@
       </span>
       <span class="create">
         <i class="fa-regular fa-clock"></i>
-        {{ details.createdAt }}
+        {{ details.updatedAt }}
       </span>
     </div>
     <p class="description">
@@ -46,6 +46,13 @@ if (process.client) {
       window.open(src)
     })
   }
-
 }
+
+useHead({
+  title: details.value.title + " - oldme",
+  meta: [
+    {  name: "keywords", content: details.value.tags },
+    {  name: "description", content: details.value.description }
+  ]
+})
 </script>
