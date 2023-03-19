@@ -39,6 +39,12 @@ try {
 }
 
 if (process.client) {
+  // 判断该文章是否存在，不存在跳转至404
+  if (details.value.id === undefined) {
+    window.location.href = "/404"
+  }
+  console.log(details.value.id)
+  // 点击图片可以查看大图片
   const img = document.getElementsByTagName("img")
   for (let i of img) {
     i.addEventListener("click", () => {
