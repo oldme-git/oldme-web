@@ -5,19 +5,19 @@
         <NuxtLink class="title" to="/">oldme 博客</NuxtLink>
         <p>{{ saying }}</p>
       </div>
-      <div class="menu" @click="isOpen = !isOpen">
-        <i class="fa fa-bars" v-if="!isOpen"></i>
-        <i class="fa fa-close" v-if="isOpen"></i>
+      <div class="menu" id="side-menu" @click="isOpen = !isOpen">
+        <i class="fa fa-bars" id="side-i-open"></i>
+        <i class="fa fa-close" id="side-i-close"></i>
       </div>
       <div class="lg-search">
         <Search />
       </div>
     </div>
     <div class="body" id="body">
-      <div class="main" id="main" :class="{'main-open': isOpen, 'main-close': !isOpen}">
+      <div class="main main-close" id="main">
         <slot />
       </div>
-      <div class="sidebar" id="sidebar" :class="{'sidebar-open': isOpen, 'sidebar-close': !isOpen}">
+      <div class="sidebar sidebar-close" id="sidebar">
         <Menu />
       </div>
     </div>
@@ -26,6 +26,7 @@
 
 <script setup>
 import api from "../utils/api";
+import * as side from "../utils/side";
 
 let isOpen = ref(false)
 let saying = ref()
@@ -42,11 +43,9 @@ try {
 }
 watch (isOpen, (status) => {
   if (status) {
-    document.getElementById("__nuxt").style.overflowX = "auto"
-    document.getElementById("body").style.height = "92rem"
+    side.open()
   } else {
-    document.getElementById("__nuxt").style.overflowX = "hidden"
-    document.getElementById("body").style.height = "auto"
+    side.close()
   }
 })
 </script>

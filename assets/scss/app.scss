@@ -71,6 +71,10 @@ html {
       font-size: 2rem;
     }
 
+    .fa-close {
+      display: none;
+    }
+
     @media (min-width: $lg) {
       display: none !important;
     }
@@ -126,7 +130,7 @@ html {
   }
 
   .sidebar-close {
-    right: calc(-100% - 2rem);
+    right: calc(-100% - 2.2rem);
   }
 }
 
