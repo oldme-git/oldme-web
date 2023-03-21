@@ -450,16 +450,24 @@ html {
 }
 
 .list-hoc {
-  a {
+  span {
     color: #63a7ea;
     font-size: 1.4rem;
     line-height: 20px;
     border-bottom: 1px #eeeeee solid;
     display: block;
     padding: .8rem 0;
+    cursor: pointer;
   }
 
   .h2 {
     padding-left: 2rem;
   }
 }
+
+//.side-toc {
+//  position: fixed;
+//  z-index: 99999;
+//  top: 0;
+//  background-color: #f3f3f3;
+//}

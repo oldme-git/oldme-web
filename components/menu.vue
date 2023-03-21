@@ -4,6 +4,8 @@
       <Search />
     </div>
 
+    <div id="side-toc" class="side-toc"></div>
+
     <div class="mt1">
       <h1 class="main-title">
         网站导航

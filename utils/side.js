@@ -31,11 +31,23 @@ export function open() {
   side().setAttribute("class", "sidebar sidebar-open")
 }
 
-export function close() {
+export function close(e) {
   nuxt().style.overflowX = "hidden"
   body().style.height = "auto"
   iconOpen().style.display = "block"
   iconClose().style.display = "none"
   main().setAttribute("class", "main main-close")
   side().setAttribute("class", "sidebar sidebar-close")
+  if (e !== undefined) {
+    setTimeout(() => {
+      const dom = e.target
+      const idName = dom.getAttribute("data-title").match(/title-[\d-]+/g)
+      const title = document.getElementById(idName[0])
+      const top = title.offsetTop
+      window.scroll({
+        top,
+        behavior: 'smooth'
+      })
+    }, 300)
+  }
 }

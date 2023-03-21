@@ -14,25 +14,24 @@
     <p class="description">
       {{ details.description }}
     </p>
+    <div class="content rich" id="rich" ref="rich" v-html="details.content"></div>
     <div ref="toc">
       <h1 class="main-title">
         本文目录
       </h1>
       <div class="list-hoc">
         <div class="h1" v-for="item of navList">
-          <a :href="item.h1.href">
+          <span :data-title="item.h1.href" @click="side.close($event)">
             {{ item.h1.title }}
-          </a>
+          </span>
           <div class="h2"  v-for="item2 of item.h2">
-            <a :href="item2.href">
+            <span :data-title="item2.href" @click="side.close($event)">
               {{ item2.title }}
-            </a>
+            </span>
           </div>
         </div>
       </div>
     </div>
-    <div class="content rich" id="rich" ref="rich" v-html="details.content"></div>
-
   </div>
 </template>
 
@@ -40,14 +39,16 @@
 import {useRoute} from "nuxt/app";
 import api from "../../utils/api";
 import {arabToChinese} from "~/utils/func";
-const route = useRoute()
+import * as side from "../../utils/side";
 
+const route = useRoute()
 const id = route.params.id
 
 let details = ref()
 const navList = ref([])
 const rich = ref()
 const toc = ref()
+const tocRect = ref()
 
 let {data: d, error: err} = await useFetch(api + "/app/article/show/" + id)
 
@@ -61,9 +62,41 @@ try {
   console.log(e)
 }
 
-onMounted(() => {
-  handelRich(rich.value)
+
+useHead({
+  title: details.value.title + " - oldme",
+  meta: [
+    {  name: "keywords", content: details.value.tags },
+    {  name: "description", content: details.value.description }
+  ]
 })
+
+onMounted(() => {
+  // 操作rich
+  handelRich(rich.value)
+  // 挂载目录
+  mountToc()
+  // 滚动监听
+  addScroll()
+
+  // 获取side-toc的Rect信息
+  tocRect.value = toc.value.getBoundingClientRect()
+})
+
+// 卸载目录
+onBeforeUnmount(() => {
+  unMountToc()
+})
+
+// 挂载目录至side
+function mountToc() {
+  document.getElementById("side-toc").append(toc.value)
+}
+
+// 卸载side目录
+function unMountToc() {
+  document.getElementById("side-toc").innerHTML = ""
+}
 
 function handelRich(richDom) {
   // 判断该文章是否存在，不存在跳转至404
@@ -141,11 +174,31 @@ function handelRich(richDom) {
   navList.value = nav
 }
 
-useHead({
-  title: details.value.title + " - oldme",
-  meta: [
-    {  name: "keywords", content: details.value.tags },
-    {  name: "description", content: details.value.description }
-  ]
-})
+// 滚动监听事件
+function scrollEvent() {
+  if (process.client) {
+    let toc = document.getElementById("side-toc")
+    // 获取已经滚动的高度
+    let top = document.documentElement.scrollTop || document.body.scrollTop
+    // 获取toc距离视窗上边距的高度
+    const topToc = tocRect.value.top
+    console.log(top)
+    console.log(topToc)
+  }
+}
+
+// 开始监听，向 window 中挂在滚动监听事件
+function addScroll() {
+  if (process.client) {
+    window.addEventListener("scroll", scrollEvent)
+  }
+}
+
+// 停止监听，移除 window 中的滚动监听事件
+function removeScroll() {
+  if (process.client) {
+    window.removeEventListener("scroll", scrollEvent)
+  }
+}
+
 </script>
