@@ -182,8 +182,6 @@ function scrollEvent() {
     let top = document.documentElement.scrollTop || document.body.scrollTop
     // 获取toc距离视窗上边距的高度
     const topToc = tocRect.value.top
-    console.log(top)
-    console.log(topToc)
   }
 }
 

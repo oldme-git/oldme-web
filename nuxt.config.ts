@@ -8,7 +8,10 @@ export default defineNuxtConfig({
             title: "oldme",
             meta: [
                 { name: "keywords", content: "oldme博客,PHP,Golang,Web开发,Web前端,Vue,Nginx" },
-                { name: "description", content: "oldme的博客，主要用来做IT技术类的知识分享，记录自己的学习历程。主要分享golang，php，vue类的Web知识" }
+                { name: "description", content: "oldme的博客，主要用来做IT技术类的知识分享，记录自己的学习历程。主要分享golang，php，vue类的Web知识" },
+                { name: "google-site-verification", content: "vfaAygGJ_9dy3PFmV9o7Sk9RWA8N_SIZgRQnyBf925I" },
+                { name: "baidu-site-verification", content: "codeva-LZewq1flLA" },
+                { name: "msvalidate.01", content: "034634029B6F7E020351137620F010E0" },
             ],
             link: [
                 {
