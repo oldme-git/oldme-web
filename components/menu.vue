@@ -6,7 +6,7 @@
 
     <div id="side-toc" class="side-toc"></div>
 
-    <div class="mt1">
+    <div>
       <h1 class="main-title">
         网站导航
       </h1>
