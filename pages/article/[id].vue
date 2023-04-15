@@ -3,12 +3,13 @@
     <h1 class="title">{{ details.title }}</h1>
     <div class="head">
       <span class="author">
-        <i class="fa fa-user-o"></i>
+        <i class="fa-regular fa-user"></i>
         {{ details.author }}
       </span>
       <span class="create">
         <i class="fa-regular fa-clock"></i>
-        {{ details.createdAt }}
+        create: {{ date(details.createdAt) }}
+        update: {{ date(details.updatedAt) }}
       </span>
     </div>
     <p class="description">
@@ -196,6 +197,17 @@ function addScroll() {
 function removeScroll() {
   if (process.client) {
     window.removeEventListener("scroll", scrollEvent)
+  }
+}
+
+// 时间只显示 Y-m-d
+function date(dateTime) {
+  const res = dateTime.match(/\d+-\d+-\d+/)
+  try {
+    return res[0]
+  } catch (e) {
+    console.log(e)
+    return ""
   }
 }
 
