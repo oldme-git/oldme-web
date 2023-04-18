@@ -73,6 +73,12 @@ useHead({
 })
 
 onMounted(() => {
+  $fetch(api + "/app/article/hist/", {
+    method: "post",
+    body: {
+      id
+    }
+  })
   // 操作rich
   handelRich(rich.value)
   // 挂载目录
