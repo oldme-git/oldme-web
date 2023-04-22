@@ -1,7 +1,25 @@
 @import "./layout";
 
+//$cMain: #EDEDF4;
+//$cSlave: #8EA4CA;
+
+// 主颜色
+$cMain: #FAF8F4;
+// 次颜色
+$cSlave: #8BAF56;
+// 标题文字颜色
+$c666: #666666;
+// 主内容文字颜色
+$c999: #999999;
+// 标注文字颜色
+$cBbb: #bbbbbb;
+$cCcc: #cccccc;
+$cDdd: #dddddd;
+$cEee: #eeeeee;
+$cFff: #ffffff;
+
 html {
-  background-color: #f3f3f3;
+  background-color: $cMain;
 }
 
 #__nuxt {
@@ -47,7 +65,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #63a7ea;
+  background-color: $cSlave;
   @include full;
   @include full-space;
 
@@ -55,19 +73,19 @@ html {
 
     .title {
       font-size: 2.2rem;
-      color: #ffffff;
+      color: $cMain;
       font-weight: bold;
     }
 
     p {
-      color: #ffffff;
+      color: $cMain;
       font-size: 1.2rem;
     }
   }
 
   .menu {
     i {
-      color: #fff;
+      color: $cFff;
       font-size: 2rem;
     }
 
@@ -114,7 +132,7 @@ html {
     z-index: 99;
     box-sizing: border-box;
     transition: right .3s cubic-bezier(.2,.56,.5,.86);
-    background-color: #f3f3f3;
+    background-color: $cMain;
 
     @media (min-width: $lg) {
       position: static;
@@ -142,11 +160,11 @@ html {
   input {
     outline: none;
     padding: .6rem 2rem .6rem 1rem;
-    color: #666666;
+    color: $c666;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    border: 1px #ffffff solid;
+    border: 1px $cFff solid;
     border-radius: .2rem;
     font-size: 1.4rem;
   }
@@ -155,7 +173,7 @@ html {
     height: 100%;
     position: absolute;
     right: 0;
-    color: #888888;
+    color: $c666;
     outline: none;
     background-color: transparent;
     border: none;
@@ -188,11 +206,11 @@ html {
 .main-title {
   width: 100%;
   height: 4rem;
-  background-color: #8076a3;
+  background-color: $cSlave;
   box-shadow: 3px 2px 4px 3px rgb(0 0 0 / 5%);
   border-radius: .4rem;
   line-height: 4rem;
-  color: #ffffff;
+  color: $cMain;
   padding-left: 1.2rem;
   box-sizing: border-box;
   font-size: 1.8rem;
@@ -202,14 +220,14 @@ html {
   li {
     line-height: 4rem;
     font-size: 1.4rem;
-    border-bottom: 1px #ddd solid;
+    border-bottom: 1px $cDdd solid;
     position: relative;
     box-sizing: border-box;
-    color: #666666;
+    color: $c666;
     cursor: pointer;
 
     a {
-      color: #666666;
+      color: $c666;
       display: inline-block;
       width: 100%;
       white-space: nowrap;
@@ -239,7 +257,7 @@ html {
 
     &:after {
       content: attr(data-sort);
-      color: #ffffff;
+      color: $cFff;
       width: 2rem;
       display: inline-block;
       text-align: center;
@@ -265,18 +283,6 @@ html {
   }
 }
 
-.list-1 {
-  li {
-    &:after {
-      content: "▶";
-      right: 0;
-      position: absolute;
-      color: #aaa;
-      font-size: 1rem;
-    }
-  }
-}
-
 .list-2 {
   li + li {
     margin-top: 1rem;
@@ -286,14 +292,14 @@ html {
     a {
       height: 12rem;
       display: flex;
-      background-color: #ffffff;
+      background-color: $cMain;
       padding: .6rem;
       border-radius: .6rem;
-      box-shadow: 0 2px 6px #cccccc;
+      box-shadow: 0 2px 6px $cCcc;
       cursor: pointer;
 
       &:hover {
-        box-shadow: 2px 6px 6px #cccccc;
+        box-shadow: 2px 6px 6px $cCcc;
       }
       @media (min-width: $lg) {
         padding: 1.2rem;
@@ -329,7 +335,7 @@ html {
       .title {
         line-height: 2.4rem;
         font-size: 1.6rem;
-        color: #666666;
+        color: $c666;
 
         @media (min-width: $lg) {
           font-size: 1.8rem;
@@ -341,7 +347,7 @@ html {
         margin-top: .2rem;
         line-height: 1.9rem;
         font-size: 1.4rem;
-        color: #999999;
+        color: $c999;
         @media (min-width: $lg) {
           -webkit-line-clamp: 3;
           line-height: 2.2rem;
@@ -349,16 +355,16 @@ html {
       }
 
       .time {
-        border-top: 1px #dddddd solid;
+        border-top: 1px $cDdd solid;
         width: 100%;
         position: absolute;
         bottom: 0;
         text-align: right;
         font-size: 1.2rem;
-        color: #bbbbbb;
+        color: $cBbb;
 
         i {
-          color: #bbbbbb;
+          color: $cBbb;
         }
       }
     }
@@ -366,19 +372,19 @@ html {
 }
 
 .article {
-  background-color: #f6f6f6;
+  background-color: $cMain;
   padding: 1.2rem;
   border-radius: 0.6rem;
-  box-shadow: 0 2px 6px #cccccc;
+  box-shadow: 0 2px 6px $cCcc;
 
   .title {
     font-size: 2.4rem;
-    color: #333333;
+    color: $c666;
   }
 
   .head {
     font-size: 1.2rem;
-    color: #999999;
+    color: $c999;
     margin-top: .6rem;
 
     .create {
@@ -389,8 +395,8 @@ html {
   .description {
     margin: 1rem 0;
     padding: 1.2rem;
-    background-color: #eeeeee;
-    color: #333333;
+    background-color: $cEee;
+    color: $c666;
     position: relative;
     font-size: 16px;
     line-height: 30px;
@@ -403,7 +409,7 @@ html {
       width: .2rem;
       top: 0;
       left: 0;
-      background-color: #8076a3;
+      background-color: $cSlave;
     }
   }
 
@@ -414,11 +420,11 @@ html {
 
 .no-result {
   font-size: 1.6rem;
-  color: #666666;
+  color: $c666;
 }
 
 .loading {
-  color: #aaaaaa;
+  color: $cBbb;
   font-size: 8rem;
   width: 100%;
   height: 40rem;
@@ -433,18 +439,18 @@ html {
     box-sizing: border-box;
     line-height: 3rem;
     font-size: 1.4rem;
-    border-bottom: 1px #eeeeee solid;
-    color: #666666;
+    border-bottom: 1px $cDdd solid;
+    color: $c666;
 
     .link-title {
       display: inline-block;
       width: 30%;
-      color: #63a7ea;
+      color: $cMain;
     }
 
     &:nth-child(1) {
       .link-title {
-        color: #666666 !important;
+        color: $c666 !important;
       }
     }
   }
@@ -452,10 +458,10 @@ html {
 
 .list-hoc {
   span {
-    color: #63a7ea;
+    color: $c666;
     font-size: 1.4rem;
     line-height: 20px;
-    border-bottom: 1px #eeeeee solid;
+    border-bottom: 1px $cDdd solid;
     display: block;
     padding: .8rem 0;
     cursor: pointer;
@@ -466,9 +472,153 @@ html {
   }
 }
 
-//.side-toc {
-//  position: fixed;
-//  z-index: 99999;
-//  top: 0;
-//  background-color: #f3f3f3;
-//}
+.rich {
+  margin-top: -10px !important;
+
+  h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 46px;
+    background-color: $cSlave;
+    box-shadow: 3px 2px 4px 3px rgb(0 0 0 / 5%);
+    border-radius: 4px;
+    line-height: 46px;
+    color: #ffffff;
+    padding-left: 12px;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+
+  h2 {
+    color: $c666;
+    box-sizing: border-box;
+    font-size: 18px;
+    position: relative;
+    padding-left: 10px;
+    background-color: $cSlave;
+    line-height: 39px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 4px;
+      border-radius: 2px;
+      top: 0;
+      left: 0;
+      background-color: $cSlave;
+    }
+  }
+
+  code {
+    background-color: $cEee;
+    color: $c666;
+    border-radius: 2px;
+    padding: 2px;
+    border: 1px solid $cBbb;
+  }
+
+  pre {
+    margin: 6px 0;
+    padding: 10px;
+    border-radius: 2px;
+    overflow-x: auto;
+    background-color: $cEee;
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    box-sizing: border-box;
+    border: 1px solid $cBbb;
+
+    code {
+      background-color: transparent;
+      padding: 0;
+      line-height: 24px;
+      border: none;
+    }
+  }
+
+  img {
+    width: 100%;
+    margin: 6px 0;
+    height: auto;
+  }
+
+  p {
+    color: $c666;
+    font-size: 15px;
+    padding: 0 4px;
+    line-height: 30px;
+    letter-spacing: 1px;
+
+    strong {
+      color: #564b7e;
+    }
+  }
+
+  span[style="text-decoration: underline"] {
+    color: red;
+  }
+
+  table {
+    margin: 10px 0;
+    color: $c666;
+    border: 1px solid $c666;
+    font-size: 12px;
+    border-collapse: collapse;
+
+    thead {
+      tr {
+        background-color: $cBbb;
+        font-weight: 700;
+      }
+    }
+
+    tr {
+      background-color: $cDdd;
+      border-radius: 10px;
+
+      &:nth-child(2n) {
+        background-color: #e3e3e3;
+      }
+    }
+
+    td {
+      box-sizing: border-box;
+      padding: 6px 8px;
+    }
+  }
+
+  ol, ul {
+    padding: 8px 8px 8px 26px;
+    box-sizing: border-box;
+    background-color: $cDdd;
+    border-radius: 2px;
+    border: 1px solid $cBbb;
+
+    li {
+      line-height: 22px;
+      font-size: 13px;
+    }
+  }
+
+  ul {
+    li {
+      list-style: disc !important;
+    }
+  }
+
+  ol {
+    li {
+      list-style: decimal !important;
+    }
+  }
+
+  a {
+    color: $cSlave;
+  }
+
+}
