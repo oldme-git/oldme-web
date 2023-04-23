@@ -1,7 +1,7 @@
 <template>
-  <div class="article">
+  <div class="article bg-main">
     <h1 class="title">关于我</h1>
-    <div class="head">
+    <div class="head mb2">
       <span class="author">
         <i class="fa fa-user-o"></i>
         {{ details.author }}

@@ -1,23 +1,20 @@
 <template>
-  <div class="article">
+  <div class="article bg-main">
     <h1 class="title">友情链接</h1>
     <div class="head">
       <span class="author">
         <i class="fa fa-user-o"></i>
-        half
+        oldme
       </span>
-    </div>
-    <div class="content rich">
-      <h1>友情链接</h1>
     </div>
     <div class="link">
       <ul>
         <li>
-          <span class="link-title">友情链接</span>
+          <span class="link-title c-slave">名称</span>
           <span>描述</span>
         </li>
         <li v-for="item in list">
-          <a class="link-title" :href="item.link">{{ item.name }}</a>
+          <a class="link-title c-slave" :href="item.link">{{ item.name }}</a>
           <span>{{ item.description }}</span>
         </li>
       </ul>

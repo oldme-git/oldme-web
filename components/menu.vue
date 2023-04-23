@@ -7,7 +7,7 @@
     <div id="side-toc" class="side-toc"></div>
 
     <div>
-      <h1 class="main-title">
+      <h1 class="main-title bg-slave c-main">
         网站导航
       </h1>
       <ul class="list-1">
@@ -21,7 +21,7 @@
     </div>
 
     <div>
-      <h1 class="main-title">
+      <h1 class="main-title bg-slave c-main">
         热门文章
       </h1>
       <ul class="list-hot">
@@ -32,7 +32,7 @@
     </div>
 
     <div class="mt1">
-      <h1 class="main-title">
+      <h1 class="main-title bg-slave c-main">
         近期文章
       </h1>
       <ul class="list-1">

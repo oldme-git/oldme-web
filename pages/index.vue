@@ -2,7 +2,7 @@
   <div id="article-list">
     <ul class="list-2">
       <li v-for="l in list">
-        <NuxtLink :to="'/article/' + l.id">
+        <NuxtLink class="bg-main" :to="'/article/' + l.id">
           <div class="left">
             <img :src="l.thumb" alt="">
           </div>

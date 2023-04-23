@@ -1,5 +1,5 @@
 <template>
-  <div class="article">
+  <div class="article bg-main">
     <h1 class="title">{{ details.title }}</h1>
     <div class="head">
       <span class="author">
@@ -13,11 +13,12 @@
       </span>
     </div>
     <p class="description">
+      <span class="bg-slave"></span>
       {{ details.description }}
     </p>
     <div class="content rich" id="rich" ref="rich" v-html="details.content"></div>
     <div ref="toc">
-      <h1 class="main-title">
+      <h1 class="main-title bg-slave c-main">
         本文目录
       </h1>
       <div class="list-hoc">
@@ -122,12 +123,13 @@ function handelRich(richDom) {
   // 生成导航目录数组
   let nav = []
 
-  // 设置h1标签的id值
+  // 设置h1标签的id值与class值
   const h1 = richDom.getElementsByTagName("h1")
   let indexH1 = 0
   for (let item of h1) {
     let id = "title-" + indexH1
     item.setAttribute("id", id)
+    item.setAttribute("class", "bg-slave c-main")
     item.setAttribute("data-index", indexH1.toString())
     item.innerText = arabToChinese(indexH1+1) + "、" + item.innerText
     nav[indexH1] = {
@@ -170,12 +172,19 @@ function handelRich(richDom) {
     let id = currH1.getAttribute("id") + "-" + indexH2
     item.setAttribute("id", id)
     item.setAttribute("data-index",  indexH1 + "-" + indexH2.toString())
+    // 为h2:after做bg-slave
     item.innerText = (indexH2+1) + ". " + item.innerText
     nav[indexH1].h2[indexH2] = {
       "title": item.innerText,
       "href": "#" + id
     }
     indexH2++
+  }
+
+  // 设置a标签的class值
+  const a = richDom.getElementsByTagName("a")
+  for (let item of a) {
+    item.setAttribute("class", "c-slave")
   }
 
   navList.value = nav

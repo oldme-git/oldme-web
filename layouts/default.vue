@@ -1,9 +1,9 @@
 <template>
   <div class="layout">
-    <div class="header">
+    <div class="header bg-slave">
       <div class="header-title">
-        <NuxtLink class="title" to="/">oldme 博客</NuxtLink>
-        <p>{{ saying }}</p>
+        <NuxtLink class="title c-main" to="/">oldme 博客</NuxtLink>
+        <p class="c-main">{{ saying }}</p>
       </div>
       <div class="menu" id="side-menu" @click="isOpen = !isOpen">
         <i class="fa fa-bars" id="side-i-open"></i>
@@ -17,7 +17,7 @@
       <div class="main main-close" id="main">
         <slot />
       </div>
-      <div class="sidebar sidebar-close" id="sidebar">
+      <div class="sidebar sidebar-close bg-main" id="sidebar">
         <Menu />
       </div>
     </div>
@@ -27,6 +27,7 @@
 <script setup>
 import api from "../utils/api";
 import * as side from "../utils/side";
+import scheme from "~/utils/scheme";
 
 let isOpen = ref(false)
 let saying = ref()
@@ -47,5 +48,8 @@ watch (isOpen, (status) => {
   } else {
     side.close()
   }
+})
+onMounted(() => {
+  scheme()
 })
 </script>

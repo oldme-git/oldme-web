@@ -1,15 +1,7 @@
 @import "./layout";
 
-//$cMain: #EDEDF4;
-//$cSlave: #8EA4CA;
-
-$cMain: #DFDFDF;
-$cSlave: #A63B41;
-
-// 主颜色
-//$cMain: #FAF8F4;
-// 次颜色
-//$cSlave: #8BAF56;
+// 加重色
+$c333: #333333;
 // 标题文字颜色
 $c666: #666666;
 // 主内容文字颜色
@@ -21,8 +13,31 @@ $cDdd: #dddddd;
 $cF2: #F2F2F2;
 $cFff: #ffffff;
 
-html {
-  background-color: $cMain;
+:root {
+  --bg-main: transparent;
+  --bg-slave: transparent;
+  --c-main: transparent;
+  --c-slave: transparent;
+}
+
+body {
+  background-color: var(--bg-main);
+}
+
+.bg-main {
+  background-color: var(--bg-main);
+}
+
+.bg-slave {
+  background-color: var(--bg-slave);
+}
+
+.c-main {
+  color: var(--c-main);
+}
+
+.c-slave {
+  color: var(--c-slave);
 }
 
 #__nuxt {
@@ -68,20 +83,16 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $cSlave;
   @include full;
   @include full-space;
 
   .header-title {
-
     .title {
       font-size: 2.2rem;
-      color: $cMain;
       font-weight: bold;
     }
 
     p {
-      color: $cMain;
       font-size: 1.2rem;
     }
   }
@@ -136,7 +147,6 @@ html {
     z-index: 99;
     box-sizing: border-box;
     transition: right .3s cubic-bezier(.2,.56,.5,.86);
-    background-color: $cMain;
 
     @media (min-width: $lg) {
       position: static;
@@ -210,11 +220,9 @@ html {
 .main-title {
   width: 100%;
   height: 4rem;
-  background-color: $cSlave;
   box-shadow: 3px 2px 4px 3px rgb(0 0 0 / 5%);
   border-radius: .4rem;
   line-height: 4rem;
-  color: $cMain;
   padding-left: 1.2rem;
   box-sizing: border-box;
   font-size: 1.8rem;
@@ -293,18 +301,20 @@ html {
   }
 
   li {
+    box-shadow: 0 1px 4px $cCcc;
+    border-left: $cF2 solid 1px;
+    border-right: $cF2 solid 1px;
+
     a {
       height: 12rem;
       display: flex;
-      background-color: $cMain;
       padding: .6rem;
-      border-radius: .6rem;
-      box-shadow: 0 2px 6px $cCcc;
       cursor: pointer;
 
       &:hover {
-        box-shadow: 2px 6px 6px $cCcc;
+        box-shadow: 0 2px 4px $cCcc;
       }
+
       @media (min-width: $lg) {
         padding: 1.2rem;
       }
@@ -376,7 +386,6 @@ html {
 }
 
 .article {
-  background-color: $cMain;
   padding: 1.2rem;
   border-radius: 0.6rem;
   box-shadow: 0 2px 6px $cCcc;
@@ -406,14 +415,12 @@ html {
     line-height: 30px;
     letter-spacing: 1px;
 
-    &:after {
-      content: "";
+    span {
       position: absolute;
       height: 100%;
       width: .2rem;
       top: 0;
       left: 0;
-      background-color: $cSlave;
     }
   }
 
@@ -449,7 +456,6 @@ html {
     .link-title {
       display: inline-block;
       width: 30%;
-      color: $cMain;
     }
 
     &:nth-child(1) {
@@ -484,24 +490,22 @@ html {
     margin-bottom: 10px;
     width: 100%;
     height: 46px;
-    background-color: $cSlave;
-    box-shadow: 3px 2px 4px 3px rgb(0 0 0 / 5%);
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 5%);
     border-radius: 4px;
     line-height: 46px;
-    color: #ffffff;
     padding-left: 12px;
     box-sizing: border-box;
     font-size: 20px;
   }
 
   h2 {
-    color: $cMain;
+    color: $c666;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 18px;
     position: relative;
     padding-left: 10px;
-    background-color: $cSlave;
+    background-color: $cF2;
     line-height: 39px;
     margin-top: 14px;
     margin-bottom: 8px;
@@ -514,7 +518,7 @@ html {
       border-radius: 2px;
       top: 0;
       left: 0;
-      background-color: $cSlave;
+      background-color: $c666;
     }
   }
 
@@ -563,7 +567,7 @@ html {
     letter-spacing: 1px;
 
     strong {
-      color: $cSlave;
+      color: $c333;
     }
   }
 
@@ -623,9 +627,5 @@ html {
     li {
       list-style: decimal !important;
     }
-  }
-
-  a {
-    color: $cSlave;
   }
 }
