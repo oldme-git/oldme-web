@@ -3,10 +3,13 @@
 //$cMain: #EDEDF4;
 //$cSlave: #8EA4CA;
 
+$cMain: #DFDFDF;
+$cSlave: #A63B41;
+
 // 主颜色
-$cMain: #FAF8F4;
+//$cMain: #FAF8F4;
 // 次颜色
-$cSlave: #8BAF56;
+//$cSlave: #8BAF56;
 // 标题文字颜色
 $c666: #666666;
 // 主内容文字颜色
@@ -15,7 +18,7 @@ $c999: #999999;
 $cBbb: #bbbbbb;
 $cCcc: #cccccc;
 $cDdd: #dddddd;
-$cEee: #eeeeee;
+$cF2: #F2F2F2;
 $cFff: #ffffff;
 
 html {
@@ -114,6 +117,7 @@ html {
 
     @media (min-width: $lg) {
       width: 69%;
+      overflow-x: hidden;
     }
   }
 
@@ -395,7 +399,7 @@ html {
   .description {
     margin: 1rem 0;
     padding: 1.2rem;
-    background-color: $cEee;
+    background-color: $cF2;
     color: $c666;
     position: relative;
     font-size: 16px;
@@ -491,7 +495,8 @@ html {
   }
 
   h2 {
-    color: $c666;
+    color: $cMain;
+    border-radius: 4px;
     box-sizing: border-box;
     font-size: 18px;
     position: relative;
@@ -514,7 +519,7 @@ html {
   }
 
   code {
-    background-color: $cEee;
+    background-color: $cF2;
     color: $c666;
     border-radius: 2px;
     padding: 2px;
@@ -526,18 +531,21 @@ html {
     padding: 10px;
     border-radius: 2px;
     overflow-x: auto;
-    background-color: $cEee;
+    background-color: $cF2;
     position: relative;
     font-size: 14px;
     line-height: 20px;
     box-sizing: border-box;
     border: 1px solid $cBbb;
+    width: 100%;
 
     code {
       background-color: transparent;
       padding: 0;
       line-height: 24px;
       border: none;
+      width: 100%;
+      display: inline-block;
     }
   }
 
@@ -555,7 +563,7 @@ html {
     letter-spacing: 1px;
 
     strong {
-      color: #564b7e;
+      color: $cSlave;
     }
   }
 
@@ -595,7 +603,7 @@ html {
   ol, ul {
     padding: 8px 8px 8px 26px;
     box-sizing: border-box;
-    background-color: $cDdd;
+    background-color: $cF2;
     border-radius: 2px;
     border: 1px solid $cBbb;
 
@@ -620,5 +628,4 @@ html {
   a {
     color: $cSlave;
   }
-
 }
