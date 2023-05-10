@@ -73,7 +73,7 @@ try {
 
 const {data: dNew, error: errNew} = await useFetch(api + "/app/article/rank", {
   query: {
-    basis: 1
+    basis: 2
   }
 })
 
