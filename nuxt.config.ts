@@ -3,6 +3,9 @@ export default defineNuxtConfig({
     app: {
         pageTransition: { name: 'page', mode: 'out-in' },
         head: {
+            htmlAttrs: {
+                lang: 'zh-CN'
+            },
             charset: "utf-8",
             viewport: "width=500, initial-scale=1",
             title: "oldme",
