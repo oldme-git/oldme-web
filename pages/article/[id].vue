@@ -112,12 +112,14 @@ function handelRich(richDom) {
     window.location.href = "/404"
   }
   // 点击图片可以查看大图片
+  // 给图片加上alt
   const img = richDom.getElementsByTagName("img")
   for (let i of img) {
     i.addEventListener("click", () => {
       let src = i.getAttribute("src")
       window.open(src)
     })
+    i.setAttribute("alt", details.value.title)
   }
 
   // 生成导航目录数组

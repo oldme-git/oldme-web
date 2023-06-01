@@ -4,7 +4,7 @@
       <li v-for="l in list">
         <NuxtLink class="bg-main" :to="'/article/' + l.id">
           <div class="left">
-            <img :src="l.thumb" alt="">
+            <img :src="l.thumb" :alt="l.title">
           </div>
           <div class="right">
             <h2 class="title">{{ l.title }}</h2>
