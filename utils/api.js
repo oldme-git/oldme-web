@@ -1,5 +1,5 @@
 // 开发环境请求地址
-const dev = "https://api.oldme.net"
+const dev = "http://127.0.0.1:8000"
 // 正式环境请求地址
 const pro = "https://api.oldme.net"
 

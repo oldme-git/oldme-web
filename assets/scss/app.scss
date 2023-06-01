@@ -226,6 +226,7 @@ body {
   padding-left: 1.2rem;
   box-sizing: border-box;
   font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .list-hot, .list-1 {
@@ -485,7 +486,7 @@ body {
 .rich {
   margin-top: -10px !important;
 
-  h1 {
+  h2 {
     margin-top: 20px;
     margin-bottom: 10px;
     width: 100%;
@@ -498,7 +499,7 @@ body {
     font-size: 20px;
   }
 
-  h2 {
+  h3 {
     color: $c666;
     border-radius: 4px;
     box-sizing: border-box;

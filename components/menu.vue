@@ -7,9 +7,9 @@
     <div id="side-toc" class="side-toc"></div>
 
     <div>
-      <h1 class="main-title bg-slave c-main">
+      <p class="main-title bg-slave c-main">
         网站导航
-      </h1>
+      </p>
       <ul class="list-1">
         <li>
           <NuxtLink to="/about">关于我</NuxtLink>
@@ -21,9 +21,9 @@
     </div>
 
     <div>
-      <h1 class="main-title bg-slave c-main">
+      <p class="main-title bg-slave c-main">
         热门文章
-      </h1>
+      </p>
       <ul class="list-hot">
         <li :data-sort="i+1" v-for="(l, i) in listHot">
           <NuxtLink :to="'/article/' + l.id">{{ l.title }}</NuxtLink>
@@ -32,9 +32,9 @@
     </div>
 
     <div class="mt1">
-      <h1 class="main-title bg-slave c-main">
+      <p class="main-title bg-slave c-main">
         近期文章
-      </h1>
+      </p>
       <ul class="list-1">
         <li v-for="l in listNew">
           <NuxtLink :to="'/article/' + l.id">{{ l.title }}</NuxtLink>

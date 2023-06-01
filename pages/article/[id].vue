@@ -18,15 +18,15 @@
     </p>
     <div class="content rich" id="rich" ref="rich" v-html="details.content"></div>
     <div ref="toc">
-      <h1 class="main-title bg-slave c-main">
+      <p class="main-title bg-slave c-main">
         本文目录
-      </h1>
+      </p>
       <div class="list-hoc">
-        <div class="h1" v-for="item of navList">
-          <span :data-title="item.h1.href" @click="side.close($event)">
-            {{ item.h1.title }}
+        <div class="h2" v-for="item of navList">
+          <span :data-title="item.h2.href" @click="side.close($event)">
+            {{ item.h2.title }}
           </span>
-          <div class="h2"  v-for="item2 of item.h2">
+          <div class="h3"  v-for="item2 of item.h3">
             <span :data-title="item2.href" @click="side.close($event)">
               {{ item2.title }}
             </span>
@@ -85,7 +85,7 @@ onMounted(() => {
   // 挂载目录
   mountToc()
   // 滚动监听
-  addScroll()
+  // addScroll()
 
   // 获取side-toc的Rect信息
   tocRect.value = toc.value.getBoundingClientRect()
@@ -123,62 +123,62 @@ function handelRich(richDom) {
   // 生成导航目录数组
   let nav = []
 
-  // 设置h1标签的id值与class值
-  const h1 = richDom.getElementsByTagName("h1")
-  let indexH1 = 0
-  for (let item of h1) {
-    let id = "title-" + indexH1
+  // 设置h2标签的id值与class值
+  const h2 = richDom.getElementsByTagName("h2")
+  let indexH2 = 0
+  for (let item of h2) {
+    let id = "title-" + indexH2
     item.setAttribute("id", id)
     item.setAttribute("class", "bg-slave c-main")
-    item.setAttribute("data-index", indexH1.toString())
-    item.innerText = arabToChinese(indexH1+1) + "、" + item.innerText
-    nav[indexH1] = {
-      "h1": {
+    item.setAttribute("data-index", indexH2.toString())
+    item.innerText = arabToChinese(indexH2+1) + "、" + item.innerText
+    nav[indexH2] = {
+      "h2": {
         "title": item.innerText,
         "href": "#" + id
       },
-      "h2": []
+      "h3": []
     }
-    indexH1++
+    indexH2++
   }
 
-  // h2标题的处理
-  const h2 = richDom.getElementsByTagName("h2")
-  // 递归追溯自己的h1标题
-  const getH1 = (dom) => {
+  // h3标题的处理
+  const h3 = richDom.getElementsByTagName("h3")
+  // 递归追溯自己的h2标题
+  const getH2 = (dom) => {
     // 先获取上一个节点
     let prev = dom.previousElementSibling
     if (prev) {
-      if (prev.tagName === "H1") {
+      if (prev.tagName === "H2") {
         return prev
       } else {
-        return getH1(prev)
+        return getH2(prev)
       }
     }
   }
-  let currH1, prevH1, currH1Title = "", indexH2 = 0
-  for (let item of h2) {
-    // 当前h2的h1
-    currH1 = getH1(item)
-    if (currH1 !== prevH1) {
+  let currH2, prevH2, currH2Title = "", indexH3 = 0
+  for (let item of h3) {
+    // 当前h3的h2
+    currH2 = getH2(item)
+    if (currH2 !== prevH2) {
       // 重置索引
-      indexH2 = 0
+      indexH3 = 0
     } else {
-      currH1Title = currH1.getAttribute("id")
+      currH2Title = currH2.getAttribute("id")
     }
-    // 载入当前的h1进入上一次的记录中
-    prevH1 = currH1
-    let indexH1 = currH1.getAttribute("data-index")
-    let id = currH1.getAttribute("id") + "-" + indexH2
+    // 载入当前的h2进入上一次的记录中
+    prevH2 = currH2
+    let indexH2 = currH2.getAttribute("data-index")
+    let id = currH2.getAttribute("id") + "-" + indexH3
     item.setAttribute("id", id)
-    item.setAttribute("data-index",  indexH1 + "-" + indexH2.toString())
-    // 为h2:after做bg-slave
-    item.innerText = (indexH2+1) + ". " + item.innerText
-    nav[indexH1].h2[indexH2] = {
+    item.setAttribute("data-index",  indexH2 + "-" + indexH3.toString())
+    // 为h3:after做bg-slave
+    item.innerText = (indexH3+1) + ". " + item.innerText
+    nav[indexH2].h3[indexH3] = {
       "title": item.innerText,
       "href": "#" + id
     }
-    indexH2++
+    indexH3++
   }
 
   // 设置a标签的class值
