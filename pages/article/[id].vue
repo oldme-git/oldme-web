@@ -84,8 +84,6 @@ onMounted(() => {
   handelRich(rich.value)
   // 挂载目录
   mountToc()
-  // 滚动监听
-  // addScroll()
 
   // 获取side-toc的Rect信息
   tocRect.value = toc.value.getBoundingClientRect()
@@ -190,31 +188,6 @@ function handelRich(richDom) {
   }
 
   navList.value = nav
-}
-
-// 滚动监听事件
-function scrollEvent() {
-  if (process.client) {
-    let toc = document.getElementById("side-toc")
-    // 获取已经滚动的高度
-    let top = document.documentElement.scrollTop || document.body.scrollTop
-    // 获取toc距离视窗上边距的高度
-    const topToc = tocRect.value.top
-  }
-}
-
-// 开始监听，向 window 中挂在滚动监听事件
-function addScroll() {
-  if (process.client) {
-    window.addEventListener("scroll", scrollEvent)
-  }
-}
-
-// 停止监听，移除 window 中的滚动监听事件
-function removeScroll() {
-  if (process.client) {
-    window.removeEventListener("scroll", scrollEvent)
-  }
 }
 
 // 时间只显示 Y-m-d
