@@ -561,13 +561,14 @@ body {
   }
 
   p {
-    color: $c666;
+    color: $c333;
     font-size: 15px;
     padding: 0 4px;
     line-height: 30px;
     letter-spacing: 1px;
 
     strong {
+      font-weight: 700;
       color: $c333;
     }
   }
