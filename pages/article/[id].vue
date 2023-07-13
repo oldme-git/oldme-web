@@ -17,6 +17,77 @@
       {{ details.description }}
     </p>
     <div class="content rich" id="rich" ref="rich" v-html="details.content"></div>
+    <div class="reply">
+      <div class="reply-title">
+        {{ replyData.total }}评论
+      </div>
+
+      <div class="reply-list">
+        <div class="reply-box" v-for="item in replyData.list">
+          <div class="box-title">
+            <reply-name :name="item.name" :site="item.site"></reply-name>
+          </div>
+          <div class="box-content">
+            {{ item.content }}
+          </div>
+          <div class="box-other">
+            <a href="#replyForm" @click="replySub(item.id, item.name)">回复TA</a> {{ item.createdAt }}
+          </div>
+
+          <div class="sub-floor">
+            <div class="reply-box" v-for="item2 in item.list">
+              <div class="box-title">
+                <reply-name :name="item2.name" :site="item2.site" :p-name="item2.pName"></reply-name>
+              </div>
+              <div class="box-content">
+                {{ item2.content }}
+              </div>
+              <div class="box-other">
+                <a href="#replyForm" @click="replySub(item2.id, item2.name)">回复TA</a> {{ item2.createdAt }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reply-form mt1" id="replyForm">
+        <p class="reply-form-title">
+          <i class="fa-solid fa-pen-nib c-slave"></i>
+          {{ replyTitle }}
+          <a href="javascript:" v-if="form.pid !== 0" @click="replySubCancel">取消回复</a>
+        </p>
+        <div class="tips">您的邮箱不会显示出来，*必填</div>
+        <form action="#" class="form">
+          <div class="form-item">
+            <label>
+              *评论
+              <textarea v-model="form.content"></textarea>
+            </label>
+          </div>
+          <div class="form-item">
+            <label>
+              *显示名称
+              <input type="text" v-model="form.name">
+            </label>
+          </div>
+          <div class="form-item">
+            <label>
+              *电子邮箱
+              <input type="text" v-model="form.email">
+            </label>
+          </div>
+          <div class="form-item">
+            <label>
+              网站地址
+              <input type="text" v-model="form.site">
+            </label>
+          </div>
+          <div class="form-item mt1">
+            <button type="button" @click="submit()">发表评论</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <div ref="toc">
       <p class="main-title bg-slave c-main">
         本文目录
@@ -26,7 +97,7 @@
           <span :data-title="item.h2.href" @click="side.close($event)">
             {{ item.h2.title }}
           </span>
-          <div class="h3"  v-for="item2 of item.h3">
+          <div class="h3" v-for="item2 of item.h3">
             <span :data-title="item2.href" @click="side.close($event)">
               {{ item2.title }}
             </span>
@@ -40,8 +111,9 @@
 <script setup>
 import {useRoute} from "nuxt/app";
 import api from "../../utils/api";
-import {arabToChinese} from "~/utils/func";
+import {arabToChinese, message} from "~/utils/func";
 import * as side from "../../utils/side";
+import ReplyName from "~/components/replyName.vue";
 
 const route = useRoute()
 const id = route.params.id
@@ -51,6 +123,18 @@ const navList = ref([])
 const rich = ref()
 const toc = ref()
 const tocRect = ref()
+
+const replyTitle = ref("欢迎您的回复")
+const replyData = ref([])
+const formDefault = {
+  aid: id,
+  pid: 0,
+  name: "",
+  email: "",
+  site: "",
+  content: ""
+}
+const form = ref(JSON.parse(JSON.stringify(formDefault)))
 
 let {data: d, error: err} = await useFetch(api + "/app/article/show/" + id)
 
@@ -64,12 +148,11 @@ try {
   console.log(e)
 }
 
-
 useHead({
   title: details.value.title + " - oldme",
   meta: [
-    {  name: "keywords", content: details.value.tags },
-    {  name: "description", content: details.value.description }
+    {name: "keywords", content: details.value.tags},
+    {name: "description", content: details.value.description}
   ]
 })
 
@@ -80,6 +163,16 @@ onMounted(() => {
       id
     }
   })
+  $fetch(api + "/app/article/reply/" + id, {
+    method: "get"
+  }).then((res) => {
+    if (res.code === 0) {
+      replyData.value = res.data
+    } else {
+      message(res.message)
+    }
+  })
+
   // 操作rich
   handelRich(rich.value)
   // 挂载目录
@@ -131,7 +224,7 @@ function handelRich(richDom) {
     item.setAttribute("id", id)
     item.setAttribute("class", "bg-slave c-main")
     item.setAttribute("data-index", indexH2.toString())
-    item.innerText = arabToChinese(indexH2+1) + "、" + item.innerText
+    item.innerText = arabToChinese(indexH2 + 1) + "、" + item.innerText
     nav[indexH2] = {
       "h2": {
         "title": item.innerText,
@@ -171,9 +264,9 @@ function handelRich(richDom) {
     let indexH2 = currH2.getAttribute("data-index")
     let id = currH2.getAttribute("id") + "-" + indexH3
     item.setAttribute("id", id)
-    item.setAttribute("data-index",  indexH2 + "-" + indexH3.toString())
+    item.setAttribute("data-index", indexH2 + "-" + indexH3.toString())
     // 为h3:after做bg-slave
-    item.innerText = (indexH3+1) + ". " + item.innerText
+    item.innerText = (indexH3 + 1) + ". " + item.innerText
     nav[indexH2].h3[indexH3] = {
       "title": item.innerText,
       "href": "#" + id
@@ -201,4 +294,31 @@ function date(dateTime) {
   }
 }
 
+// 提交
+function submit() {
+  $fetch(api + "/app/reply", {
+    method: "post",
+    body: form.value
+  }).then((res) => {
+    if (res.code === 0) {
+      message("感谢您的回复，审核后会在回复区显示")
+      form.value = formDefault
+      replySubCancel()
+    } else {
+      message(res.message)
+    }
+  })
+}
+
+// 子回复
+function replySub(id, name) {
+  replyTitle.value = "回复给 " + name
+  form.value.pid = id
+}
+
+// 取消子回复
+function replySubCancel() {
+  form.value.pid = 0
+  replyTitle.value = "欢迎您的回复"
+}
 </script>

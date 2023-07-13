@@ -7,9 +7,9 @@ const palette = [
   ["#FFFDF8", "#F08C4E"],
   ["#FEF5EA", "#C29E64"],
   ["#FAF8F4", "#8BAF56"],
-  ["#F7F1EA", "#5BA5B2"],
+  ["#fcf9f6", "#5BA5B2"],
   ["#EDEDF4", "#8EA4CA"],
-  ["#FFF2EB", "#7359B1"],
+  ["#fffbf3", "#7359B1"],
   ["#FFFFF6", "#5D4F57"],
 ]
 const curr = rndInt(0, palette.length-1)

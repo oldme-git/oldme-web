@@ -32,3 +32,7 @@ export function arabToChinese(section) {
 export function rndInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min
 }
+
+export function message(text, type) {
+  alert(text)
+}
