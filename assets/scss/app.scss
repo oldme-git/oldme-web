@@ -433,6 +433,10 @@ body {
   .reply {
     margin-top: 3rem;
 
+    a {
+      text-decoration: underline;
+    }
+
     .reply-title {
       font-size: 20px;
       font-weight: bold;
