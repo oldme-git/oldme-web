@@ -126,15 +126,7 @@ const tocRect = ref()
 
 const replyTitle = ref("欢迎您的回复")
 const replyData = ref([])
-const formDefault = {
-  aid: id,
-  pid: 0,
-  name: "",
-  email: "",
-  site: "",
-  content: ""
-}
-const form = ref(JSON.parse(JSON.stringify(formDefault)))
+const form = ref({})
 
 let {data: d, error: err} = await useFetch(api + "/app/article/show/" + id)
 
@@ -180,6 +172,9 @@ onMounted(() => {
 
   // 获取side-toc的Rect信息
   tocRect.value = toc.value.getBoundingClientRect()
+
+  // 重置form
+  resetForm()
 })
 
 // 卸载目录
@@ -195,6 +190,18 @@ function mountToc() {
 // 卸载side目录
 function unMountToc() {
   document.getElementById("side-toc").innerHTML = ""
+}
+
+// 重置回复form
+function resetForm() {
+  form.value = {
+    aid: id,
+    pid: 0,
+    name: "",
+    email: "",
+    site: "",
+    content: ""
+  }
 }
 
 function handelRich(richDom) {
@@ -302,7 +309,7 @@ function submit() {
   }).then((res) => {
     if (res.code === 0) {
       message("感谢您的回复，审核后会在回复区显示")
-      form.value = formDefault
+      resetForm()
       replySubCancel()
     } else {
       message(res.message)
