@@ -3,7 +3,7 @@
     <div class="header bg-slave">
       <div class="header-title">
         <NuxtLink class="title c-main" to="/">oldme 博客</NuxtLink>
-        <p class="c-main">{{ saying }}</p>
+        <p class="c-main saying">{{ saying }}</p>
       </div>
       <div class="menu" id="side-menu" @click="isOpen = !isOpen">
         <i class="fa fa-bars" id="side-i-open"></i>

@@ -78,11 +78,14 @@ body {
 }
 
 .header {
-  height: 7rem;
+  min-height: 7rem;
+  box-sizing: border-box;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   @include full;
   @include full-space;
 
@@ -91,6 +94,10 @@ body {
       font-size: 2.2rem;
       font-weight: bold;
       text-decoration: none;
+    }
+
+    .saying {
+      padding-right: 1rem;
     }
 
     p {
