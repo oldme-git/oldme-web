@@ -2,7 +2,7 @@
   <div class="layout">
     <div class="header bg-slave">
       <div class="header-title">
-        <NuxtLink class="title c-main" to="/">oldme 博客</NuxtLink>
+        <a class="title c-main" href="/">oldme 博客</a>
         <p class="c-main saying">{{ saying }}</p>
       </div>
       <div class="menu" id="side-menu" @click="isOpen = !isOpen">

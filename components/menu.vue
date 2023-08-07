@@ -41,6 +41,19 @@
         </li>
       </ul>
     </div>
+
+    <div class="mt1">
+      <p class="main-title bg-slave c-main">
+        分类
+      </p>
+      <ul class="list-1">
+        <li v-for="l in listGrp">
+          <a :href="'/?grp=' + l.id">
+            {{ l.name }} ({{ l.article_count }})
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -49,6 +62,8 @@ import api from "../utils/api";
 
 const listHot = ref([])
 const listNew = ref([])
+const listGrp = ref([])
+
 const {data: dHot, error: errHot} = await useFetch(api + "/app/article/rank", {
   query: {
     basis: 1
@@ -86,6 +101,28 @@ try {
     if (len > 0) {
       for (let i = 0; i < dataList.length; i++) {
         listNew.value.push(dataList[i])
+      }
+    }
+  }
+} catch (e) {
+  console.log(e)
+}
+
+const {data: dGrp, error: errGrp} = await useFetch(api + "/app/article/group/list", {
+  query: {
+    basis: 2
+  }
+})
+
+try {
+  if (dGrp.value.code !== 0) {
+    console.log(dGrp.value.message)
+  } else {
+    let dataList = dGrp.value.data.list
+    let len = dataList.length
+    if (len > 0) {
+      for (let i = 0; i < dataList.length; i++) {
+        listGrp.value.push(dataList[i])
       }
     }
   }

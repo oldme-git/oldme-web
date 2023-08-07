@@ -35,6 +35,7 @@ const route = useRoute()
 let page = ref(1)
 let list = ref([])
 let search = ref("")
+let grp = ref("")
 
 if (process.client) {
   const getQueryVariable = (variable) => {
@@ -49,6 +50,7 @@ if (process.client) {
     return ""
   }
   search = getQueryVariable("search")
+  grp = getQueryVariable("grp")
 }
 
 onMounted(() => {
@@ -57,7 +59,7 @@ onMounted(() => {
 })
 
 async function loadData() {
-  let {data: d, error: err} = await useFetch(api + "/app/article/list", {
+  let {data: d, error: err} = await useFetch(api + "/app/article/list/" + grp, {
     query: {
       page,
       search
