@@ -8,21 +8,10 @@
 </template>
 
 <script setup>
-import {navigateTo} from "nuxt/app";
+import {getQueryVariable} from "~/utils/func";
 
 let searchText = ref("")
 if (process.client) {
-  const getQueryVariable = (variable) => {
-    let query = window.location.search.substring(1)
-    let vars = query.split("&")
-    for (let i = 0; i < vars.length; i++) {
-      let pair = vars[i].split("=")
-      if (pair[0] == variable) {
-        return pair[1]
-      }
-    }
-    return false
-  }
   if (getQueryVariable("search")) {
     searchText.value = getQueryVariable("search")
   }

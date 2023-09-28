@@ -30,6 +30,7 @@
 <script setup>
 import api from "../utils/api"
 import {useRoute} from "nuxt/app"
+import {getQueryVariable} from "~/utils/func";
 
 const route = useRoute()
 let page = ref(1)
@@ -38,17 +39,6 @@ let search = ref("")
 let grp = ref("")
 
 if (process.client) {
-  const getQueryVariable = (variable) => {
-    let query = window.location.search.substring(1)
-    let vars = query.split("&")
-    for (let i = 0; i < vars.length; i++) {
-      let pair = vars[i].split("=")
-      if (pair[0] == variable) {
-        return pair[1]
-      }
-    }
-    return ""
-  }
   search = getQueryVariable("search")
   grp = getQueryVariable("grp")
 }
