@@ -8,8 +8,8 @@
       </span>
       <span class="create">
         <i class="fa-regular fa-clock"></i>
-        create: {{ date(details.createdAt) }}
-        update: {{ date(details.updatedAt) }}
+        create: {{ dateYmd(details.createdAt) }}
+        update: {{ dateYmd(details.updatedAt) }}
       </span>
     </div>
     <p class="description">
@@ -111,7 +111,7 @@
 <script setup>
 import {useRoute} from "nuxt/app";
 import api from "../../utils/api";
-import {arabToChinese, message} from "~/utils/func";
+import {arabToChinese, message, dateYmd} from "~/utils/func";
 import * as side from "../../utils/side";
 import ReplyName from "~/components/replyName.vue";
 
@@ -288,17 +288,6 @@ function handelRich(richDom) {
   }
 
   navList.value = nav
-}
-
-// 时间只显示 Y-m-d
-function date(dateTime) {
-  const res = dateTime.match(/\d+-\d+-\d+/)
-  try {
-    return res[0]
-  } catch (e) {
-    console.log(e)
-    return ""
-  }
 }
 
 // 提交

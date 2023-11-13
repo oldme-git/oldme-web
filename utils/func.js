@@ -49,3 +49,14 @@ export function getQueryVariable(variable) {
   }
   return ""
 }
+
+// 时间只显示 Y-m-d
+export function dateYmd(dateTime) {
+  const res = dateTime.match(/\d+-\d+-\d+/)
+  try {
+    return res[0]
+  } catch (e) {
+    console.log(e)
+    return ""
+  }
+}

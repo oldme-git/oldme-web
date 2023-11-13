@@ -9,7 +9,7 @@
           <div class="right">
             <h2 class="title">{{ l.title }}</h2>
             <p class="description">描述： {{ l.description }}</p>
-            <p class="time"><i class="fa-regular fa-clock"></i> {{ l.createdAt }}</p>
+            <p class="time"><i class="fa-regular fa-clock"></i> {{ dateYmd(l.createdAt) }}</p>
           </div>
         </NuxtLink>
       </li>
@@ -30,7 +30,7 @@
 <script setup>
 import api from "../utils/api"
 import {useRoute} from "nuxt/app"
-import {getQueryVariable} from "~/utils/func";
+import {dateYmd, getQueryVariable} from "~/utils/func";
 
 const route = useRoute()
 let page = ref(1)
