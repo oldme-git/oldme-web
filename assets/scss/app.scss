@@ -315,7 +315,6 @@ body {
     border-right: $cF2 solid 1px;
 
     a {
-      height: 12rem;
       display: flex;
       padding: .6rem;
       cursor: pointer;
@@ -334,9 +333,11 @@ body {
         width: 12rem;
         height: 12rem;
         object-fit: cover;
+        border-radius: .2rem;
 
         @media (min-width: $lg) {
-          width: 16rem;
+          width: 13rem;
+          height: 13rem;
         }
       }
     }
@@ -344,6 +345,7 @@ body {
     .right {
       position: relative;
       margin-left: 1.6rem;
+      padding-top: .6rem;
       width: 100%;
 
       .title,
