@@ -3,11 +3,11 @@
     <h1 class="title">{{ details.title }}</h1>
     <div class="head">
       <span class="author">
-        <i class="fa-regular fa-user"></i>
+        <i class="fa fa-user"></i>
         {{ details.author }}
       </span>
       <span class="create">
-        <i class="fa-regular fa-clock"></i>
+        <i class="fa fa-clock-o"></i>
         create: {{ dateYmd(details.createdAt) }}
         update: {{ dateYmd(details.updatedAt) }}
       </span>
@@ -52,7 +52,7 @@
 
       <div class="reply-form mt1" id="replyForm">
         <p class="reply-form-title">
-          <i class="fa-solid fa-pen-nib c-slave"></i>
+          <i class="fa fa-pencil-square-o c-slave"></i>
           {{ replyTitle }}
           <a href="javascript:" v-if="form.pid !== 0" @click="replySubCancel">取消回复</a>
         </p>

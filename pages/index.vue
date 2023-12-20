@@ -9,7 +9,7 @@
           <div class="right">
             <h2 class="title">{{ l.title }}</h2>
             <p class="description">描述： {{ l.description }}</p>
-            <p class="time"><i class="fa-regular fa-clock"></i> {{ dateYmd(l.createdAt) }}</p>
+            <p class="time"><i class="fa fa-clock-o"></i> {{ dateYmd(l.createdAt) }}</p>
           </div>
         </NuxtLink>
       </li>
@@ -20,7 +20,7 @@
           没有搜索到内容，请重新搜索
         </span>
         <p class="loading" v-else>
-          <i class="fa-solid fa-spinner fa-spin"></i>
+          <i class="fa fa-spin fa-spinner"></i>
         </p>
       </div>
     </div>
