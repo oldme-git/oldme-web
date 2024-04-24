@@ -9,7 +9,6 @@
       <span class="create">
         <i class="fa fa-clock-o"></i>
         create: {{ dateYmd(details.createdAt) }}
-        update: {{ dateYmd(details.updatedAt) }}
       </span>
     </div>
     <p class="description">
