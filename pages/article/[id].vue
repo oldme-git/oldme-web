@@ -280,9 +280,16 @@ function handelRich(richDom) {
     indexH3++
   }
 
-  // 设置a标签的class值
+  // 设置 a 标签的 class 值
   const a = richDom.getElementsByTagName("a")
   for (let item of a) {
+    item.setAttribute("class", "c-slave")
+  }
+
+  // 设置 code 标签的class值
+  const code = richDom.getElementsByTagName("code")
+  console.log(code)
+  for (let item of code) {
     item.setAttribute("class", "c-slave")
   }
 

@@ -25,19 +25,19 @@ body {
 }
 
 .bg-main {
-  background-color: var(--bg-main);
+  background-color: var(--bg-main) !important;
 }
 
 .bg-slave {
-  background-color: var(--bg-slave);
+  background-color: var(--bg-slave) !important;
 }
 
 .c-main {
-  color: var(--c-main);
+  color: var(--c-main) !important;
 }
 
 .c-slave {
-  color: var(--c-slave);
+  color: var(--c-slave) !important;
 }
 
 #__nuxt {
@@ -627,11 +627,12 @@ body {
   }
 
   code {
-    background-color: $cF2;
+    background-color: rgba(27, 31, 35, 0.03);
     color: $c666;
-    border-radius: 2px;
-    padding: 2px;
-    border: 1px solid $cBbb;
+    border-radius: 4px;
+    padding: 3px;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   pre {
@@ -654,6 +655,8 @@ body {
       border: none;
       width: 100%;
       display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
     }
   }
 
@@ -669,6 +672,7 @@ body {
     padding: 0 4px;
     line-height: 30px;
     letter-spacing: 1px;
+    font-weight: 500;
 
     strong {
       font-weight: 700;
