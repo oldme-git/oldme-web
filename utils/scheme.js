@@ -2,7 +2,6 @@ import {rndInt} from "~/utils/func"
 
 // 颜色盘
 const palette = [
-  ["#FDFCF5", "#81D8D1"],
   ["#FDFDFD", "#A63B41"],
   ["#FFFDF8", "#F08C4E"],
   ["#FEF5EA", "#C29E64"],
