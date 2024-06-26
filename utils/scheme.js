@@ -11,15 +11,21 @@ const palette = [
   ["#fffbf3", "#7359B1"],
   ["#FFFFF6", "#5D4F57"],
 ]
-const curr = rndInt(0, palette.length-1)
 
-// 主颜色
-const m = palette[curr][0]
-// 次颜色
-const s = palette[curr][1]
+// 导出调色板
+export {palette}
 
+// 默认主题设置，使用随机的颜色
 export default function () {
-// 主题设置，使用不同的颜色
+  const curr = rndInt(0, palette.length-1)
+  setTheme(curr)
+}
+
+export function setTheme(index) {
+  // 主颜色
+  const m = palette[index][0]
+  // 次颜色
+  const s = palette[index][1]
   document.documentElement.style.setProperty("--bg-main", m)
   document.documentElement.style.setProperty("--bg-slave", s)
   document.documentElement.style.setProperty("--c-main", m)

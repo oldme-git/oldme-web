@@ -4,7 +4,9 @@
       <Search />
     </div>
 
-    <div id="side-toc" class="side-toc"></div>
+    <Palette />
+
+    <div id="side-toc" class="side-toc mt1"></div>
 
     <div>
       <p class="main-title bg-slave c-main">
@@ -59,6 +61,7 @@
 
 <script setup>
 import api from "../utils/api";
+import Palette from "~/layouts/palette.vue";
 
 const listHot = ref([])
 const listNew = ref([])
