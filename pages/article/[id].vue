@@ -230,7 +230,7 @@ function handelRich(richDom) {
     item.setAttribute("id", id)
     item.setAttribute("class", "bg-slave c-main")
     item.setAttribute("data-index", indexH2.toString())
-    item.innerText = arabToChinese(indexH2 + 1) + "、" + item.innerText
+    item.innerText = `${indexH2+1}. ${item.innerText}`
     nav[indexH2] = {
       "h2": {
         "title": item.innerText,
@@ -272,7 +272,8 @@ function handelRich(richDom) {
     item.setAttribute("id", id)
     item.setAttribute("data-index", indexH2 + "-" + indexH3.toString())
     // 为h3:after做bg-slave
-    item.innerText = (indexH3 + 1) + ". " + item.innerText
+    // item.innerText = (indexH3 + 1) + ". " + item.innerText
+    item.innerText = `${parseInt(indexH2)+1}.${indexH3+1}. ${item.innerText}`
     nav[indexH2].h3[indexH3] = {
       "title": item.innerText,
       "href": "#" + id

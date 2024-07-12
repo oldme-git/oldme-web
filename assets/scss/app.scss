@@ -573,17 +573,23 @@ body {
 
 .list-hoc {
   span {
-    color: $c666;
     font-size: 1.4rem;
     line-height: 20px;
     border-bottom: 1px $cDdd solid;
     display: block;
     padding: .8rem 0;
+    color: $c666;
     cursor: pointer;
   }
 
   .h2 {
+    padding-left: 1rem;
+    font-weight: 700;
+  }
+
+  .h3 {
     padding-left: 2rem;
+    font-weight: 500;
   }
 }
 
