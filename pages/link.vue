@@ -1,23 +1,19 @@
 <template>
   <div class="article bg-main">
     <h1 class="title">友情链接</h1>
-    <div class="head">
-      <span class="author">
-        <i class="fa fa-user-o"></i>
-        oldme
-      </span>
-    </div>
-    <div class="link">
-      <ul>
-        <li>
-          <span class="link-title c-slave">名称</span>
-          <span>描述</span>
-        </li>
-        <li v-for="item in list">
-          <a class="link-title c-slave" :href="item.link">{{ item.name }}</a>
-          <span>{{ item.description }}</span>
-        </li>
-      </ul>
+    <div class="link mt1">
+      <table class="table">
+        <tr>
+          <th>名称</th>
+          <th>描述</th>
+        </tr>
+        <tr v-for="item in list">
+          <td>
+            <a class="link-title" :href="item.link">{{ item.name }}</a>
+          </td>
+          <td>{{ item.description }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>

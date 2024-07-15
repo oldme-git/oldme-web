@@ -17,6 +17,9 @@
           <NuxtLink to="/about">关于我</NuxtLink>
         </li>
         <li>
+          <NuxtLink to="/reading">读书日记</NuxtLink>
+        </li>
+        <li>
           <NuxtLink to="/link">友情链接</NuxtLink>
         </li>
       </ul>

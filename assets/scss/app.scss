@@ -549,25 +549,32 @@ body {
   justify-content: center;
 }
 
-.link {
-  li {
-    padding-left: 1rem;
-    box-sizing: border-box;
-    line-height: 3rem;
-    font-size: 1.4rem;
+.table {
+  font-size: 1.4rem;
+  color: $c666;
+  line-height: 3rem;
+  border-collapse: collapse;
+  width: 100%;
+
+  tr {
     border-bottom: 1px $cDdd solid;
-    color: $c666;
+    text-align: left;
+  }
+}
 
-    .link-title {
-      display: inline-block;
-      width: 30%;
-    }
+.link {
+  .link-title {
+    color: $c666 !important;
+  }
+}
 
-    &:nth-child(1) {
-      .link-title {
-        color: $c666 !important;
-      }
-    }
+.reading {
+  .finished {
+    font-weight: 700;
+  }
+
+  .giveup {
+    font-weight: 300;
   }
 }
 
