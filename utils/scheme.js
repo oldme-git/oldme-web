@@ -3,13 +3,13 @@ import {rndInt} from "~/utils/func"
 // 颜色盘
 const palette = [
   ["#FDFDFD", "#A63B41"],
-  ["#FFFDF8", "#F08C4E"],
+  ["#FFFDF8", "#F49227"],
   ["#FEF5EA", "#C29E64"],
-  ["#FAF8F4", "#8BAF56"],
-  ["#fcf9f6", "#5BA5B2"],
+  ["#EDEDED", "#6B8770"],
+  ["#FCF9F6", "#5BA5B2"],
   ["#EDEDF4", "#8EA4CA"],
-  ["#fffbf3", "#7359B1"],
-  ["#FFFFF6", "#5D4F57"],
+  ["#FAF9F9", "#7C739F"],
+  ["#F5F2E9", "#86908A"],
 ]
 
 // 导出调色板
