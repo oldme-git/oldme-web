@@ -14,13 +14,28 @@
       </p>
       <ul class="list-1">
         <li>
-          <NuxtLink to="/about">关于我</NuxtLink>
+          <NuxtLink to="/about">
+            <i class="fa fa-user mr1"></i>
+            关于我
+          </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/reading">读书日记</NuxtLink>
+          <NuxtLink to="/reading">
+            <i class="fa fa-book mr1"></i>
+            读书日记
+          </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/link">友情链接</NuxtLink>
+          <NuxtLink to="https://github.com/oldme-git" target="_blank">
+            <i class="fa fa-github mr1"></i>
+            我的Github
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/link">
+            <i class="fa fa-link mr1"></i>
+            友情链接
+          </NuxtLink>
         </li>
       </ul>
     </div>
