@@ -208,16 +208,6 @@ function handelRich(richDom) {
   if (details.value.id === undefined) {
     window.location.href = "/404"
   }
-  // 点击图片可以查看大图片
-  // 给图片加上alt
-  const img = richDom.getElementsByTagName("img")
-  for (let i of img) {
-    i.addEventListener("click", () => {
-      let src = i.getAttribute("src")
-      window.open(src)
-    })
-    i.setAttribute("alt", details.value.title)
-  }
 
   // 生成导航目录数组
   let nav = []
@@ -282,9 +272,14 @@ function handelRich(richDom) {
   }
 
   // 设置 a 标签的 class 值
+  // 并且加上icon
   const a = richDom.getElementsByTagName("a")
   for (let item of a) {
     item.setAttribute("class", "c-slave")
+    let icon = document.createElement("i")
+    icon.setAttribute("class", "fa fa-external-link")
+    icon.setAttribute("style", "margin-left: 2px")
+    item.appendChild(icon)
   }
 
   // 设置 code 标签的class值
@@ -292,6 +287,17 @@ function handelRich(richDom) {
   console.log(code)
   for (let item of code) {
     item.setAttribute("class", "c-slave")
+  }
+
+  // 点击图片可以查看大图片
+  // 给图片加上alt
+  const img = richDom.getElementsByTagName("img")
+  for (let i of img) {
+    i.addEventListener("click", () => {
+      let src = i.getAttribute("src")
+      window.open(src)
+    })
+    i.setAttribute("alt", details.value.title)
   }
 
   navList.value = nav
