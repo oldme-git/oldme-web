@@ -16,7 +16,13 @@
         <li>
           <NuxtLink to="/about">
             <i class="fa fa-user mr1"></i>
-            关于我
+            &nbsp;关于我
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/article/20">
+            <i class="fa fa-heart mr1"></i>
+            关于本站
           </NuxtLink>
         </li>
         <li>

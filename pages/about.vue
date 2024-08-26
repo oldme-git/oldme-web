@@ -12,12 +12,14 @@
       </span>
     </div>
     <div class="content rich" v-html="details.content"></div>
+    <reply :id="id"></reply>
   </div>
 </template>
 
 <script setup>
 import api from "~/utils/api";
 
+const id = "1"
 let details = ref()
 
 let {data: d, error: err} = await useFetch(api + "/app/about")
@@ -31,7 +33,6 @@ try {
 } catch (e) {
   console.log(e)
 }
-
 
 useHead({
   title: details.value.title + " - oldme",
