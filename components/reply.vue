@@ -87,6 +87,13 @@ const replyData = ref([])
 const form = ref({})
 
 onMounted(() => {
+  loadReply()
+
+  // 重置form
+  resetForm()
+})
+
+function loadReply() {
   $fetch(api + "/app/article/reply/" + id, {
     method: "get"
   }).then((res) => {
@@ -96,10 +103,7 @@ onMounted(() => {
       message(res.message)
     }
   })
-
-  // 重置form
-  resetForm()
-})
+}
 
 // 重置回复form
 function resetForm() {
@@ -121,6 +125,7 @@ function submit() {
   }).then((res) => {
     if (res.code === 0) {
       message("感谢您的回复")
+      loadReply()
       resetForm()
       replySubCancel()
     } else {
