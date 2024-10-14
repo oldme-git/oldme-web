@@ -120,7 +120,7 @@ function submit() {
     body: form.value
   }).then((res) => {
     if (res.code === 0) {
-      message("感谢您的回复，审核后会在回复区显示")
+      message("感谢您的回复")
       resetForm()
       replySubCancel()
     } else {
