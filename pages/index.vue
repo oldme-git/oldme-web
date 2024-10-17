@@ -52,6 +52,7 @@ async function loadData() {
   let {data: d, error: err} = await useFetch(api + "/app/article/list/" + grp, {
     query: {
       page,
+      size: 10,
       search
     }
   })
