@@ -51,17 +51,17 @@ try {
 
 function statusText(status) {
   switch (status) {
-    case 1:
+    case 10:
       return "弃读"
-    case 2:
+    case 21:
       return "正常完结"
-    case 3:
+    case 22:
       return "粗读完结"
-    case 4:
+    case 23:
       return "网文完结"
-    case 8:
+    case 85:
       return "特殊书类"
-    case 9:
+    case 95:
       return "在读"
   }
 }
