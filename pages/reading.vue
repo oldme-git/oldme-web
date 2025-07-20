@@ -17,7 +17,9 @@
         <tr v-for="item in list">
           <td>{{ item.name }}</td>
           <td>{{ item.author }}</td>
-          <td :class="[{'giveup': item.status === 1},{'finished': item.status === 2}]">{{ statusText(item.status) }}</td>
+          <td :class="[{'giveup': item.status === 1},{'finished': item.status === 2}]">
+            {{ statusText(item.status) }}
+          </td>
           <td>{{ dateText(item.finished_at) }}</td>
         </tr>
       </table>
@@ -52,7 +54,13 @@ function statusText(status) {
     case 1:
       return "弃读"
     case 2:
-      return "完结"
+      return "正常完结"
+    case 3:
+      return "粗读完结"
+    case 4:
+      return "网文完结"
+    case 8:
+      return "特殊书类"
     case 9:
       return "在读"
   }
