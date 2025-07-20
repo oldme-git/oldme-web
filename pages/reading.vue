@@ -17,7 +17,7 @@
         <tr v-for="item in list">
           <td>{{ item.name }}</td>
           <td>{{ item.author }}</td>
-          <td :class="[{'giveup': item.status === 10},{'finished': [21, 22, 23].includes(item.status)}]">
+          <td :class="[{'giveup': item.status === 10},{'finished': item.status >= 20 && item.status < 30}]">
             {{ statusText(item.status) }}
           </td>
           <td>{{ dateText(item.finished_at) }}</td>
