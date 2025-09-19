@@ -1,34 +1,22 @@
 <template>
   <div class="bg-main">
-    <p class="text poem">{{ poem?.poem }}</p>
-    <p class="c-slave slang">{{ slang?.slang }}</p>
+    <p class="text poem">{{ sentence?.poem }}</p>
+    <p class="c-slave slang">{{ sentence?.slang }}</p>
   </div>
 </template>
 
 <script setup>
 import api from "~/utils/api";
 
-let poem = ref()
-let slang = ref()
+let sentence = ref()
 
-let {data: poemData, error: poemErr} = await useFetch(api + "/app/poem")
-let {data: slangData, error: slangErr} = await useFetch(api + "/app/slang")
+let {data: sentenceData, error: err} = await useFetch(api + "/app/sentence")
 
 try {
-  if (poemData.value.code !== 0) {
-    console.log(poemData.value.message)
+  if (sentenceData.value.code !== 0) {
+    console.log(sentenceData.value.message)
   } else {
-    poem.value = poemData.value.data
-  }
-} catch (e) {
-  console.log(e)
-}
-
-try {
-  if (slangData.value.code !== 0) {
-    console.log(slangData.value.message)
-  } else {
-    slang.value = slangData.value.data
+    sentence.value = sentenceData.value.data
   }
 } catch (e) {
   console.log(e)
