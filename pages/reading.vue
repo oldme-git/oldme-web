@@ -54,13 +54,11 @@ function statusText(status) {
     case 10:
       return "弃读"
     case 15:
-      return "特殊书类"
+      return "特殊"
     case 21:
-      return "粗读完结"
-    case 25:
-      return "网文完结"
+      return "粗读"
     case 29:
-      return "正常完结"
+      return "完结"
     case 95:
       return "在读"
   }
